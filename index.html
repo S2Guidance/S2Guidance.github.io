@@ -1,22 +1,62 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S²-Guidance Logo (Glass Effect)</title>
+    <title>S²-Guidance Project</title>
+    <!-- 链接到我们的样式文件 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入谷歌字体，让文字更好看 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="logo-container">
-        <!-- S² 部分保持不变 -->
-        <div class="s2-text">S<span class="superscript">2</span></div>
+
+    <!-- 主内容容器 -->
+    <div class="container">
         
-        <!-- Guidance 部分，用一个 div 实现所有效果 -->
-        <div class="guidance-text-glass">Guidance</div>
+        <!-- 1. 项目Logo -->
+        <header class="project-header">
+            <img src="S2_Guidance_Logo.png" alt="S²-Guidance Logo" class="logo-image">
+        </header>
+
+        <!-- 2. 链接按钮 -->
+        <nav class="button-container">
+            <!-- 将 href="#" 替换为你的真实链接 -->
+            <a href="#" class="action-button">📄 Research Paper</a>
+            <a href="#" class="action-button">💻 GitHub</a>
+            <!-- 您可以添加更多按钮，例如： -->
+            <!-- <a href="#" class="action-button">🚀 Live Demo</a> -->
+        </nav>
+
+        <!-- 3. 作者信息 -->
+        <main class="author-section">
+            <div class="authors">
+                <p class="author-line">
+                    <span>Chubin Chen<sup>1,2,*</sup></span>
+                    <span>Jiashu Zhu<sup>2</sup></span>
+                    <span>Xiaokun Feng<sup>2,3</sup></span>
+                    <span>Nisha Huang<sup>1</sup></span>
+                </p>
+                <p class="author-line">
+                    <span>Meiqi Wu<sup>2,3</sup></span>
+                    <span>Fangyuan Mao<sup>2</sup></span>
+                    <span>Jiahong Wu<sup>2,‡</sup></span>
+                    <span>Xiangxiang Chu<sup>2</sup></span>
+                    <span>Xiu Li<sup>1,†</sup></span>
+                </p>
+            </div>
+            <div class="affiliations">
+                <p>
+                    <sup>1</sup>Tsinghua University &nbsp;&nbsp;&nbsp;
+                    <sup>2</sup>AMAP, Alibaba Group &nbsp;&nbsp;&nbsp;
+                    <sup>3</sup>CASIA
+                </p>
+            </div>
+        </main>
+        
     </div>
-    <!-- 不需要 script.js -->
+
 </body>
 </html>
