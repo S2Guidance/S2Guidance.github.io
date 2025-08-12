@@ -1,87 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S² Guidance Logo</title>
-    <style>
-        /* 设置页面全宽全高以及默认样式 */
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #121020; /* 背景备用色 */
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>S² Guidance — Layered Hero</title>
 
-        /* 容器，居中包含内容 */
-        .container {
-            position: relative;
-            width: 1400px;
-            height: 600px;
-        }
+  <!-- 在线字体（可改成本地） -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 
-        /* 背景图片覆盖 */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('background.jpg') no-repeat center center / cover;
-            z-index: 1;
-        }
+  <style>
+    :root{
+      /* 画布尺寸与遮罩强度 */
+      --hero-width: 1400px;       /* 桌面示例宽度；移动端会自适应 */
+      --hero-height: 600px;
+      --mask-alpha-top: 0.90;     /* 顶部遮罩不透明度（0~1） */
+      --mask-alpha-bottom: 0.92;  /* 底部遮罩不透明度（0~1） */
 
-        /* 半透明蒙版 */
-        .mask {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(18, 18, 32, 0.5), rgba(32, 32, 64, 0.5));
-            z-index: 2;
-        }
+      /* 遮罩颜色（与参考 Python 近似） */
+      --mask-top: 18,18,32;       /* #121220 */
+      --mask-bottom: 32,32,64;    /* #202040 */
 
-        /* Logo样式 */
-        .logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Poppins', sans-serif; /* 确保字体文件已导入 */
-            text-align: center;
-            z-index: 3;
-        }
+      /* 品牌主色（S² 的双色分割） */
+      --t2i: 100,180,255;         /* 淡蓝 */
+      --t2v: 200,100,255;         /* 紫粉 */
 
-        .logo .s2 {
-            font-size: 200px;
-            font-weight: bold;
-            color: rgba(255, 200, 255, 0.9);
-            text-shadow: 0 0 20px rgba(200, 180, 255, 0.8), 0 0 40px rgba(200, 180, 255, 0.6);
-        }
+      /* 发光颜色 */
+      --glow1: 200,200,255;  /* 柔蓝光 */
+      --glow2: 140,100,220;  /* 紫色光 */
 
-        .logo .guidance {
-            font-size: 80px;
-            color: rgba(255, 255, 200, 0.9);
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(255, 255, 200, 0.8), 0 0 40px rgba(255, 255, 200, 0.6);
-        }
-    </style>
+      /* 文本与布局 */
+      --logo-max-size: 14rem;     /* 顶层 Logo 的最大字号 */
+      --logo-min-size: 3rem;      /* 顶层 Logo 的最小字号 */
+      --letter-spacing: 0.02em;
+    }
+
+    /* 页面与容器基础 */
+    * { box-sizing: border-box; }
+    html,body { height: 100%; margin: 0; background: #0e0f1a; }
+    body { display: grid; place-items: center; }
+
+    .hero {
+      position: relative;
+      width: min(100vw, var(--hero-width));
+      aspect-ratio: 7 / 3;               /* 约等于 1400x600 */
+      height: auto;
+      max-height: var(--hero-height);
+      overflow: hidden;
+      border-radius: 10px;
+      /* 让深色背景更柔和一些 */
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+
+    /* 底图层 */
+    .hero__bg {
+      position: absolute; inset: 0;
+      background-image: url("background.jpg"); /* 替换为你的底图地址 */
+      background-size: cover;
+      background-position: center;
+      transform: translateZ(0); /* 提升渲染性能 */
+      /* 少许调色，靠近示意图整体氛围 */
+      filter: saturate(1.05) contrast(1.05) brightness(.85);
+    }
+
+    /* 半透明遮罩层（纵向渐变） */
+    .hero__mask {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        /* 中央淡淡聚光，增强文字区域对比度 */
+        radial-gradient(60% 50% at 50% 52%,
+          rgba(255,255,255,.05) 0%,
+          rgba(255,255,255,0) 60%),
+        linear-gradient(
+          to bottom,
+          rgba(var(--mask-top),   var(--mask-alpha-top))   0%,
+          rgba(26,26,46, calc((var(--mask-alpha-top)+var(--mask-alpha-bottom))/2)) 50%,
+          rgba(var(--mask-bottom),var(--mask-alpha-bottom)) 100%
+        );
+      /* 轻微蓝紫色调叠加 */
+      mix-blend-mode: multiply;
+    }
+
+    /* 顶层 Logo 容器 */
+    .hero__logo {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      padding-inline: clamp(12px, 4vw, 40px);
+      text-align: center;
+    }
+
+    /* 文字行 */
+    .wordmark {
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      font-weight: 800;
+      letter-spacing: var(--letter-spacing);
+      line-height: 0.92;
+      font-size: clamp(var(--logo-min-size), 10vw, var(--logo-max-size));
+      color: transparent;                     /* 通过背景裁剪上色 */
+      position: relative;
+      /* 让色彩和底图相互作用，接近“亮化叠加”的感觉 */
+      mix-blend-mode: screen;
+      -webkit-text-stroke: 1px rgba(255,255,255,.06); /* 细描边增加锐度 */
+      text-shadow:
+        0 0 2px rgba(255,255,255,.06),
+        0 0 8px rgba(var(--glow1), .25),
+        0 0 18px rgba(var(--glow1), .25),
+        0 0 36px rgba(var(--glow2), .25);
+    }
+
+    /* S² 与 Guidance 分开做填充，便于不同效果 */
+    .wordmark .s2 {
+      /* 斜向双色分割，模拟 T2I/T2V */
+      background:
+        linear-gradient(35deg, rgba(var(--t2i),1) 0 48%, rgba(var(--t2v),1) 52% 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      padding-right: .15em;
+      position: relative;
+    }
+    .wordmark .s2 sup {
+      font-size: 45%;
+      font-weight: 900;
+      vertical-align: text-top;
+      margin-left: -0.25em;
+      /* 让上标更亮一点 */
+      filter: drop-shadow(0 0 6px rgba(var(--t2v), .65));
+    }
+
+    .wordmark .guidance {
+      /* 多彩渐变 + 颗粒感贴图（noise 图片可换成你自己的） */
+      background:
+        /* 可选：小颗粒/星点噪声（data URI 简易噪声） */
+        url("data:image/svg+xml;utf8,\
+          <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>\
+            <defs><radialGradient id='g' r='1'>\
+              <stop offset='0' stop-color='white' stop-opacity='.95'/>\
+              <stop offset='.7' stop-color='white' stop-opacity='0'/>\
+            </radialGradient></defs>\
+            <rect width='120' height='120' fill='transparent'/>\
+            <circle cx='12' cy='16' r='1.2' fill='url(%23g)'/>\
+            <circle cx='48' cy='36' r='1.4' fill='url(%23g)'/>\
+            <circle cx='84' cy='22' r='1.1' fill='url(%23g)'/>\
+            <circle cx='66' cy='62' r='1.2' fill='url(%23g)'/>\
+            <circle cx='28' cy='78' r='1.1' fill='url(%23g)'/>\
+            <circle cx='98' cy='88' r='1.6' fill='url(%23g)'/>\
+            <circle cx='22' cy='104' r='1.3' fill='url(%23g)'/>\
+            <circle cx='74' cy='102' r='1.2' fill='url(%23g)'/>\
+          </svg>"),
+        linear-gradient(90deg,
+          rgba(var(--t2i),.98) 0%,
+          rgba(160,140,255,.95) 20%,
+          rgba(180,170,255,.95) 32%,
+          rgba(140,180,255,.95) 45%,
+          rgba(170,120,255,.95) 60%,
+          rgba(210,150,255,.95) 75%,
+          rgba(var(--t2v),.98) 100%);
+      background-size: 160px 160px, 100% 100%;
+      background-position: center;
+      -webkit-background-clip: text;
+      background-clip: text;
+      position: relative;
+      /* 更强的外发光（模拟粒子辉光） */
+      text-shadow:
+        0 0 2px rgba(255,255,255,.08),
+        0 0 10px rgba(var(--glow1), .35),
+        0 0 22px rgba(var(--glow1), .35),
+        0 0 46px rgba(var(--glow2), .30),
+        0 0 72px rgba(var(--glow2), .25);
+    }
+
+    /* 微调响应式排版，使单行更稳定 */
+    .wordmark .s2,
+    .wordmark .guidance { white-space: nowrap; }
+
+    /* 轻微的底部条形高光，强化中轴明度（可选） */
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(to bottom,
+          rgba(255,255,255,.00) 0%,
+          rgba(255,255,255,.04) 48%,
+          rgba(255,255,255,.00) 60%);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    /* 移动端细节：略增字号、减小外发光 */
+    @media (max-width: 640px) {
+      :root { --logo-min-size: 2.2rem; }
+      .wordmark { text-shadow:
+        0 0 2px rgba(255,255,255,.04),
+        0 0 10px rgba(var(--glow1), .18),
+        0 0 20px rgba(var(--glow2), .18);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 背景图层 -->
-        <div class="background"></div>
-        <!-- 半透明蒙版 -->
-        <div class="mask"></div>
-        <!-- Logo文本 -->
-        <div class="logo">
-            <div class="s2">S²</div>
-            <div class="guidance">Guidance</div>
-        </div>
+
+  <section class="hero" aria-label="S² Guidance">
+    <!-- 底层背景图 -->
+    <div class="hero__bg" role="img" aria-label="Artwork collage background"></div>
+
+    <!-- 中层半透明遮罩 -->
+    <div class="hero__mask" aria-hidden="true"></div>
+
+    <!-- 顶层 Logo（CSS 渲染版） -->
+    <div class="hero__logo">
+      <h1 class="wordmark" aria-label="S squared Guidance">
+        <span class="s2">S<sup>2</sup></span>
+        <span class="guidance">Guidance</span>
+      </h1>
     </div>
+
+    <!-- 如果你有用 Python 生成的 PNG，并想使用图片替代上面的文字：
+         1) 注释掉上面的 .hero__logo 内的 <h1>，保留容器
+         2) 取消下面注释，并把 src 换成你的透明 PNG
+    <div class="hero__logo" style="mix-blend-mode: screen;">
+      <img src="S2_Guidance_Logo_Semi_Transparent.png"
+           alt="S² Guidance logo" style="width: 88%; height: auto; filter: drop-shadow(0 0 18px rgba(180,170,255,.35));">
+    </div>
+    -->
+  </section>
+
 </body>
 </html>
