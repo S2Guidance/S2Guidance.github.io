@@ -10,52 +10,48 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+</head><body>
 
-    <!-- 主内容容器 -->
-    <div class="container">
-        
-        <!-- 1. 项目Logo -->
-        <header class="project-header">
-            <img src="S2_Guidance_Logo.png" alt="S²-Guidance Logo" class="logo-image">
-        </header>
+    <!-- 主容器，负责将内容推到底部 -->
+    <div class="main-container">
 
-        <!-- 2. 链接按钮 -->
-        <nav class="button-container">
-            <!-- 将 href="#" 替换为你的真实链接 -->
-            <a href="#" class="action-button">📄 Research Paper</a>
-            <a href="#" class="action-button">💻 GitHub</a>
-            <!-- 您可以添加更多按钮，例如： -->
-            <!-- <a href="#" class="action-button">🚀 Live Demo</a> -->
-        </nav>
+        <!-- 内容包装器，所有文字和按钮都在这里面 -->
+        <div class="content-wrapper">
 
-        <!-- 3. 作者信息 -->
-        <main class="author-section">
-            <div class="authors">
-                <p class="author-line">
-                    <span>Chubin Chen<sup>1,2,*</sup></span>
-                    <span>Jiashu Zhu<sup>2</sup></span>
-                    <span>Xiaokun Feng<sup>2,3</sup></span>
-                    <span>Nisha Huang<sup>1</sup></span>
-                </p>
-                <p class="author-line">
-                    <span>Meiqi Wu<sup>2,3</sup></span>
-                    <span>Fangyuan Mao<sup>2</sup></span>
-                    <span>Jiahong Wu<sup>2,‡</sup></span>
-                    <span>Xiangxiang Chu<sup>2</sup></span>
-                    <span>Xiu Li<sup>1,†</sup></span>
-                </p>
-            </div>
-            <div class="affiliations">
-                <p>
-                    <sup>1</sup>Tsinghua University &nbsp;&nbsp;&nbsp;
-                    <sup>2</sup>AMAP, Alibaba Group &nbsp;&nbsp;&nbsp;
-                    <sup>3</sup>CASIA
-                </p>
-            </div>
-        </main>
-        
+            <!-- 1. 链接按钮 -->
+            <nav class="button-container">
+                <!-- 将 href="#" 替换为你的真实链接 -->
+                <a href="https://arxiv.org/abs/2312.01323" class="action-button">📄 Research Paper</a>
+                <a href="https://github.com/chubin-chen/S2-Guidance" class="action-button">💻 GitHub</a>
+                <!-- 您可以添加更多按钮 -->
+            </nav>
+
+            <!-- 2. 作者信息 -->
+            <main class="author-section">
+                <div class="authors">
+                    <p class="author-line">
+                        <span>Chubin Chen<sup>1,2,*</sup></span>
+                        <span>Jiashu Zhu<sup>2</sup></span>
+                        <span>Xiaokun Feng<sup>2,3</sup></span>
+                        <span>Nisha Huang<sup>1</sup></span>
+                    </p>
+                    <p class="author-line">
+                        <span>Meiqi Wu<sup>2,3</sup></span>
+                        <span>Fangyuan Mao<sup>2</sup></span>
+                        <span>Jiahong Wu<sup>2,‡</sup></span>
+                        <span>Xiangxiang Chu<sup>2</sup></span>
+                        <span>Xiu Li<sup>1,†</sup></span>
+                    </p>
+                </div>
+                <div class="affiliations">
+                    <p>
+                        <sup>1</sup>Tsinghua University &nbsp;&nbsp;&nbsp;
+                        <sup>2</sup>AMAP, Alibaba Group &nbsp;&nbsp;&nbsp;
+                        <sup>3</sup>CASIA
+                    </p>
+                </div>
+            </main>
+        </div>
     </div>
 
 </body>
