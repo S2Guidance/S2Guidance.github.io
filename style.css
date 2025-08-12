@@ -4,17 +4,47 @@ html, body {
     padding: 0;
     height: 100%;
     font-family: 'Source Serif Pro', serif;
+    background-color: #121220; /* 后备背景色 */
+    color: #ffffff;
+    
+    /* 
+     * --- 核心改动：多背景图层 ---
+     * 我们在这里同时指定了两个背景图片。
+     * 第一个 (top.png) 在最上层，第二个 (bottom.png) 在最下层。
+     */
+    background-image: url('./top.png'), url('./bottom.png');
+    
+    /* 
+     * 为每个图层独立设置属性，用逗号分隔。
+     * 第一个值对应 top.png，第二个值对应 bottom.png。
+     */
+    background-position: center center, center center; /* 两个都居中 */
+    background-size: cover, cover;                   /* 两个都铺满屏幕 */
+    background-repeat: no-repeat, no-repeat;         /* 两个都不重复 */
+    background-attachment: fixed, fixed;             /* 两个都固定，滚动时不移动 */
+}
+
+/* --- 更简洁、专业的写法 (Shorthand) ---
+ * 上面的 background-image, position, size 等属性可以合并成一行。
+ * 效果完全相同，但代码更整洁。
+ * 您可以用下面这块代码替换掉上面整个 html, body 的样式块。
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Source Serif Pro', serif;
     background-color: #121220;
     color: #ffffff;
     
-    background-image: url('./background.pdf');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: 
+        url('./top.png') center center / cover no-repeat fixed, 
+        url('./bottom.png') center center / cover no-repeat fixed;
 }
+*/
 
-/* --- 主容器和渐变蒙版 --- */
+
+/* --- 主容器和渐变蒙版 (保持不变) --- */
 .main-container {
     display: flex;
     flex-direction: column;
@@ -26,15 +56,14 @@ html, body {
     background: linear-gradient(to top, rgba(10, 10, 20, 0.9) 15%, rgba(10, 10, 20, 0) 50%);
 }
 
-/* --- 内容包装器 (透明布局工具) --- */
+/* --- 之后的所有代码都保持不变 --- */
 .content-wrapper {
     width: 100%;
     max-width: 950px;
-    padding: 1rem 1rem 2rem 1rem; /* 调整padding以适应新布局 */
+    padding: 1rem 1rem 2rem 1rem;
     text-align: center;
 }
 
-/* --- 炫酷的标题样式 --- */
 .paper-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -52,9 +81,8 @@ html, body {
         0 0 30px rgba(18, 18, 32, 1);
 }
 
-/* --- 作者和机构 --- */
 .author-section {
-    margin-bottom: 1.5rem; /* 作者机构和备注之间的间距 */
+    margin-bottom: 1.5rem;
 }
 
 .authors .author-line {
@@ -82,20 +110,18 @@ html, body {
     color: #e0e0e0;
 }
 
-/* --- 备注信息样式 (核心改动) --- */
 .notes-section {
-    font-size: 0.8rem; /* 缩小字体 */
-    color: #b0b0b0;    /* 颜色更暗，使其更低调 */
-    margin-bottom: 2.5rem; /* 备注和按钮之间的间距 */
-    padding: 0 1rem; /* 增加左右内边距，防止贴边 */
+    font-size: 0.8rem;
+    color: #b0b0b0;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
 }
 
 .notes-section p {
     margin: 0;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 1); /* 添加阴影保证可读性 */
+    text-shadow: 0 0 8px rgba(0, 0, 0, 1);
 }
 
-/* --- 按钮样式 --- */
 .button-container {
     display: flex;
     justify-content: center;
