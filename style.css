@@ -1,65 +1,79 @@
-/* 全局样式和背景设置 */
+/* 全局和背景样式 (保持不变) */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    /* 对应 Python: background_layer + bg_alpha */
     background-image: 
         linear-gradient(to bottom, rgba(18, 18, 32, 0.8), rgba(32, 32, 64, 0.85)),
         url('backv2.pdf');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
 }
 
-/* Logo 主容器 */
+/* Logo 容器 (保持不变) */
 .logo-container {
     display: flex;
     justify-content: center;
     align-items: baseline;
     gap: 30px;
-    /* 稍微缩小一点以适应屏幕 */
     transform: scale(0.9);
 }
 
-/* "S²" 文本样式 (CSS 实现) */
+/* "S²" 文本样式 (保持不变) */
 .s2-text {
     font-size: 300px;
     font-weight: 700;
     line-height: 1;
     display: flex;
     align-items: flex-start;
-    
-    /* 对应 Python: s2_mask + s2_color_layer */
     background: linear-gradient(130deg, #64B4FF, #C864FF);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-
-    /* 对应 Python: s2_glow_mask + GaussianBlur */
     text-shadow: 0 0 40px rgba(200, 200, 255, 0.4);
 }
 
 .s2-text .superscript {
-    font-size: 0.4em; /* 120px / 300px */
+    font-size: 0.4em;
     line-height: 1.5;
     margin-left: -0.1em;
 }
 
-/* "Guidance" 部分的容器 (Canvas 占位符) */
-.guidance-container {
-    /* 尺寸将由 JS 中的 Canvas 动态决定，这里只是为了布局 */
-    position: relative;
+/* --- "Guidance" 的全新玻璃效果实现 --- */
+.guidance-text-glass {
+    font-size: 250px;
+    font-weight: 700;
+    position: relative; /* 用于定位 */
+
+    /* 
+     * 步骤 1: 设置非常淡的半透明文字颜色。
+     * 这只是给玻璃一个非常浅的底色，让它不是完全透明。
+    */
+    color: rgba(255, 255, 255, 0.15);
+
+    /* 
+     * 步骤 2: 添加辉光和彩色边缘。
+     * 这是实现“内发光”感的核心。我们用多个 text-shadow 叠加：
+     * - 前两个 shadow 偏移量很小，颜色是我们的主题色，负责创建锐利的彩色边缘。
+     * - 第三个 shadow 是一个更弥散的白色辉光，负责整体的发光感。
+    */
+    text-shadow: 
+        -1px -1px 1px rgba(100, 180, 255, 0.7), /* 蓝色上边缘 */
+        1px 1px 1px rgba(200, 100, 255, 0.7),  /* 紫色下边缘 */
+        0 0 30px rgba(220, 220, 255, 0.5);      /* 外部柔和辉光 */
+
+    /* 
+     * 步骤 3: 实现核心的“磨砂玻璃”效果！
+     * backdrop-filter 是一个神奇的属性，它可以对元素“背后”的内容施加滤镜。
+     * - blur(4px): 让文字背后的背景图片变得模糊。
+     * - brightness(1.2): 让文字背后的背景图片稍微变亮，产生光线穿透感。
+     * 这是实现图2质感的关键，粒子效果完全做不到这一点。
+    */
+    backdrop-filter: blur(4px) brightness(1.2);
+    -webkit-backdrop-filter: blur(4px) brightness(1.2); /* 兼容性写法 */
 }
 
-/* Canvas 元素将由 JS 添加，可以预设一些样式 */
-#guidanceCanvas {
-    /* 辉光效果的另一种实现方式，比在 JS 中用 shadowBlur 性能更好 */
-    /* 对应 Python: guidance_glow_mask + GaussianBlur */
-    filter: drop-shadow(0 0 15px rgba(200, 200, 255, 0.3));
-}
