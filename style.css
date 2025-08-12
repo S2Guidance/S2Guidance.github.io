@@ -1,0 +1,95 @@
+/* --- 全局样式和背景设置 --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Source Serif Pro', serif; /* 默认使用衬线字体，符合论文风格 */
+    background-color: #121220; /* 深紫色背景，作为图片加载失败时的后备 */
+    color: #ffffff; /* 默认文字颜色为白色 */
+    
+    /* 关键的背景图片设置 */
+    background-image: url('background.png'); /* 引用你的背景图片 */
+    background-size: cover; /* 铺满整个屏幕，保持比例 */
+    background-position: center center; /* 图片居中显示 */
+    background-repeat: no-repeat; /* 图片不重复 */
+    background-attachment: fixed; /* 固定背景，滚动时内容移动，背景不动，效果很酷 */
+}
+
+/* --- 内容容器和布局 --- */
+.container {
+    display: flex;
+    flex-direction: column; /* 垂直排列内容 */
+    align-items: center; /* 水平居中 */
+    justify-content: center; /* 垂直居中 */
+    min-height: 100vh; /* 容器至少和屏幕一样高 */
+    padding: 2rem;
+    box-sizing: border-box; /* 让padding不影响总宽高 */
+    
+    /* 添加一个半透明的黑色遮罩，让白色文字在任何背景上都清晰可见 */
+    background-color: rgba(18, 18, 32, 0.7); 
+    backdrop-filter: blur(5px); /* 毛玻璃效果，让背景更柔和 */
+}
+
+/* --- Logo样式 --- */
+.logo-image {
+    max-width: 90%; /* Logo最大宽度为屏幕的90% */
+    width: 700px; /* 给一个具体的宽度，可以根据喜好调整 */
+    height: auto; /* 高度自动，保持比例 */
+    margin-bottom: 2rem; /* Logo下方的间距 */
+}
+
+/* --- 按钮样式 --- */
+.button-container {
+    display: flex;
+    gap: 1.5rem; /* 按钮之间的间距 */
+    margin-bottom: 2.5rem; /* 按钮区域下方的间距 */
+}
+
+.action-button {
+    font-family: 'Poppins', sans-serif; /* 按钮使用无衬线字体，更具现代感 */
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px; /* 圆角胶囊形状 */
+    background: rgba(170, 70, 255, 0.6); /* 使用Logo中的紫色，半透明 */
+    border: 2px solid rgba(220, 180, 255, 0.8);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.action-button:hover {
+    background: rgba(200, 100, 255, 1); /* 鼠标悬停时更亮 */
+    transform: translateY(-3px); /* 向上移动一点，有悬浮感 */
+    box-shadow: 0 8px 25px rgba(170, 70, 255, 0.7); /* 增强阴影，产生光晕效果 */
+}
+
+/* --- 作者和单位信息样式 --- */
+.author-section {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3); /* 给作者区域一个深色底板，更易读 */
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    max-width: 900px; /* 限制最大宽度，防止在大屏幕上拉得太开 */
+}
+
+.authors .author-line {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* 作者名字之间的间距 */
+    flex-wrap: wrap; /* 屏幕窄时自动换行 */
+    margin: 0.5rem 0;
+}
+
+.authors span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap; /* 确保名字和上标不换行 */
+}
+
+.affiliations {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #cccccc; /* 单位信息颜色稍暗，以示区分 */
+}
