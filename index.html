@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S²-Guidance Project</title>
-    <!-- 链接到我们的样式文件 -->
     <link rel="stylesheet" href="style.css">
-    <!-- 引入谷歌字体，让文字更好看 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
-</head><body>
+</head>
+<body>
 
-    <!-- 主容器，负责将内容推到底部 -->
     <div class="main-container">
-
-        <!-- 内容包装器，所有文字和按钮都在这里面 -->
         <div class="content-wrapper">
 
-            <!-- 1. 链接按钮 -->
+            <!-- NEW: Paper Title -->
+            <h2 class="paper-title">
+                Stochastic Self-Guidance for Training-Free Enhancement of Diffusion Models
+            </h2>
+
+            <!-- Links -->
             <nav class="button-container">
-                <!-- 将 href="#" 替换为你的真实链接 -->
                 <a href="https://arxiv.org/abs/2312.01323" class="action-button">📄 Research Paper</a>
                 <a href="https://github.com/chubin-chen/S2-Guidance" class="action-button">💻 GitHub</a>
-                <!-- 您可以添加更多按钮 -->
             </nav>
 
-            <!-- 2. 作者信息 -->
+            <!-- Author Information -->
             <main class="author-section">
                 <div class="authors">
                     <p class="author-line">
@@ -43,6 +42,14 @@
                         <span>Xiu Li<sup>1,†</sup></span>
                     </p>
                 </div>
+                
+                <!-- NEW: Symbol Notes -->
+                <div class="symbol-notes">
+                    <p>*Work done during the internship at AMAP, Alibaba Group.</p>
+                    <p><sup>†</sup>Corresponding author.</p>
+                    <p><sup>‡</sup>Project lead.</p>
+                </div>
+
                 <div class="affiliations">
                     <p>
                         <sup>1</sup>Tsinghua University &nbsp;&nbsp;&nbsp;
