@@ -1,0 +1,97 @@
+/* 全局样式和背景设置 */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0c0c14; /* 一个深色背景来衬托logo */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* 隐藏溢出的内容 */
+}
+
+/* 一个简单的背景图案，用以展示 Logo 的半透明效果 */
+.background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+}
+
+/* Logo 主容器，对应 Python 中的画布 */
+.logo-container {
+    width: 1400px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* S² 和 Guidance 之间的间距 */
+    position: relative; /* 用于定位内部元素 */
+
+    /* 核心改动：复刻半透明渐变背景 */
+    /* background: linear-gradient(to bottom, #121220, #202040); */
+    /* 使用 rgba 来实现半透明，236/255 ≈ 0.925 */
+    background: linear-gradient(
+        to bottom, 
+        rgba(18, 18, 32, 0.925), 
+        rgba(32, 32, 64, 0.925)
+    );
+    border-radius: 20px; /* 一点圆角，让它看起来更精致 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 添加一点阴影 */
+}
+
+/* "S²" 文本样式 */
+.s2-text {
+    font-size: 300px;
+    font-weight: 700; /* 'Poppins-Bold' 对应 700 */
+    line-height: 1;
+    position: relative;
+    
+    /* 核心逻辑：复刻 S² 的对角渐变填充 */
+    /* 1. 定义渐变背景 */
+    background: linear-gradient(
+        130deg,  /* 这个角度近似于 Python 脚本中的 x - y*0.8 > C */
+        #64B4FF, /* COLOR_T2I: (100, 180, 255) */
+        #C864FF  /* COLOR_T2V: (200, 100, 255) */
+    );
+    /* 2. 将背景裁剪为文字的形状 */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* 3. 让文字本身变透明，从而显示出背景 */
+    color: transparent;
+
+    /* 核心逻辑：复刻辉光效果 (GaussianBlur) */
+    /* 使用多个 text-shadow 叠加可以创造更柔和的辉光 */
+    text-shadow: 0 0 30px rgba(200, 200, 255, 0.4);
+}
+
+/* "²" 的上标样式调整 */
+.s2-text sup {
+    font-size: 120px;
+    /* 调整上标的位置，使其更贴近 'S' */
+    position: relative;
+    top: -1.1em;
+    left: -0.15em;
+}
+
+
+/* "Guidance" 部分的容器 */
+.guidance-container {
+    /* 尺寸由 JS 中的 Canvas 决定，这里只是一个占位符 */
+    position: relative;
+    width: 820px; /* 大致估算一个宽度 */
+    height: 250px; /* 大致估算一个高度 */
+    margin-top: 30px; /* 稍微向下偏移以匹配视觉效果 */
+}
+
+/* Canvas 元素将由 JS 添加，我们预先设置好样式 */
+#guidanceCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
