@@ -4,27 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S²-Guidance Logo</title>
-    <!-- 引入 'Poppins' 字体 -->
+    <!-- 1. 引入 'Poppins' 字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     
-    <!-- 链接样式表 -->
+    <!-- 2. 链接样式表 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 用于展示半透明效果的背景图案 -->
+    <!-- 背景图案 -->
     <div class="background-pattern"></div>
 
     <!-- Logo 主容器 -->
     <div class="logo-container">
         
-        <!-- S 元素。"2" 将由 CSS 的伪元素生成 -->
-        <div class="s-logo">S</div>
+        <!-- S² 部分的容器 -->
+        <div class="s2-container">
+            <!-- "2" 将由 CSS 伪元素生成 -->
+            <span class="s-text">S</span>
+        </div>
+
+        <!-- Guidance 部分的容器，由 JS 填充 -->
+        <div class="guidance-container">
+            <!-- Canvas 将在这里被 JS 创建并插入 -->
+        </div>
 
     </div>
 
-    <!-- 不再需要 JavaScript 文件 -->
+    <!-- 3. 链接 JavaScript 文件，必须放在 body 结尾 -->
+    <script src="script.js"></script>
 </body>
 </html>
