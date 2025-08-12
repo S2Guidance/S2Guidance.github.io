@@ -3,32 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S²-Guidance Logo (Python Logic Recreation)</title>
-    <!-- 1. 引入与 Python 脚本中使用的 'Poppins' 字体 -->
+    <title>S²-Guidance Logo (Glass Effect)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    
-    <!-- 2. 链接我们自己的样式表 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 图片背景和半透明叠加层由 CSS 在 body 上实现 -->
-
-    <!-- Logo 的主容器 -->
     <div class="logo-container">
-        
-        <!-- S² 部分，用纯 CSS 实现 -->
+        <!-- S² 部分保持不变 -->
         <div class="s2-text">S<span class="superscript">2</span></div>
-
-        <!-- Guidance 部分的容器，将由 JavaScript 和 Canvas 绘制 -->
-        <div class="guidance-container">
-            <!-- Canvas 将在这里被 JS 创建并插入 -->
-        </div>
-
+        
+        <!-- Guidance 部分，用一个 div 实现所有效果 -->
+        <div class="guidance-text-glass">Guidance</div>
     </div>
-
-    <!-- 3. 链接我们的 JavaScript 文件 (放在 body 结尾以确保 DOM 加载完毕) -->
-    <script src="script.js"></script>
+    <!-- 不需要 script.js -->
 </body>
 </html>
