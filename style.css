@@ -8,14 +8,10 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-
-    /* 核心：设置图片网格背景，并叠加一个半透明的深色渐变层 */
-    /* 这完美复刻了你的 Python 代码中 bg_alpha=236 的效果 */
+    /* 对应 Python: background_layer + bg_alpha */
     background-image: 
-        /* 1. 半透明深色渐变叠加层 */
-        linear-gradient(to bottom, rgba(18, 18, 32, 0.85), rgba(32, 32, 64, 0.85)),
-        /* 2. 底层是我们的图片网格 (请确保图片存在) */
-        url('back.jpg');
+        linear-gradient(to bottom, rgba(18, 18, 32, 0.8), rgba(32, 32, 64, 0.85)),
+        url('backv2.pdf');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,56 +21,45 @@ body {
 .logo-container {
     display: flex;
     justify-content: center;
-    /* 使用 baseline 对齐，让 S 和 Guidance 的基线对齐，视觉效果更好 */
-    align-items: baseline; 
-    gap: 30px; /* S² 和 Guidance 之间的间距 */
+    align-items: baseline;
+    gap: 30px;
+    /* 稍微缩小一点以适应屏幕 */
+    transform: scale(0.9);
 }
 
-/* "S²" 文本样式容器 */
+/* "S²" 文本样式 (CSS 实现) */
 .s2-text {
-    font-size: 300px; /* 对应 Python 中的 s_font size=300 */
+    font-size: 300px;
     font-weight: 700;
     line-height: 1;
-    position: relative;
-    display: flex; 
+    display: flex;
     align-items: flex-start;
     
-    /* 对角渐变填充，复刻 Python 中的颜色分割 */
+    /* 对应 Python: s2_mask + s2_color_layer */
     background: linear-gradient(130deg, #64B4FF, #C864FF);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 
-    /* 辉光效果，复刻 Python 中的 GaussianBlur */
-    text-shadow: 0 0 40px rgba(200, 200, 255, 0.5);
+    /* 对应 Python: s2_glow_mask + GaussianBlur */
+    text-shadow: 0 0 40px rgba(200, 200, 255, 0.4);
 }
 
-/* "²" 的上标样式修正 */
 .s2-text .superscript {
-    font-size: 0.4em; /* 对应 Python 中的 script_font size=120 (120/300=0.4) */
-    line-height: 1.5; /* 调整行高，稍微将 '2' 向上推 */
-    margin-left: -0.1em; /* 负边距让 '2' 更贴近 'S' */
+    font-size: 0.4em; /* 120px / 300px */
+    line-height: 1.5;
+    margin-left: -0.1em;
 }
 
-/* "Guidance" 文本样式，直接实现期望效果图 */
-.guidance-text {
-    font-size: 250px; /* 尺寸可以微调，这里比 Python 的 200px 稍大以匹配视觉 */
-    font-weight: 700;
+/* "Guidance" 部分的容器 (Canvas 占位符) */
+.guidance-container {
+    /* 尺寸将由 JS 中的 Canvas 动态决定，这里只是为了布局 */
+    position: relative;
+}
 
-    /* --- 核心技巧：实现内发光和半透明填充 --- */
-
-    /* 1. 设置半透明的文字填充色，让背景图片可以透出来 */
-    color: rgba(255, 255, 255, 0.6);
-
-    /* 2. 定义一个透明的描边，它会“拓宽”文字区域 */
-    -webkit-text-stroke: 4px transparent;
-    
-    /* 3. 将彩色渐变作为背景，并裁剪到文字形状（包括描边区域） */
-    /* 这个渐变会填充描边，从而形成“内发光” */
-    background: linear-gradient(130deg, #64B4FF, #C864FF);
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    /* 4. 添加外部的辉光效果 */
-    text-shadow: 0 0 60px rgba(200, 200, 255, 0.6);
+/* Canvas 元素将由 JS 添加，可以预设一些样式 */
+#guidanceCanvas {
+    /* 辉光效果的另一种实现方式，比在 JS 中用 shadowBlur 性能更好 */
+    /* 对应 Python: guidance_glow_mask + GaussianBlur */
+    filter: drop-shadow(0 0 15px rgba(200, 200, 255, 0.3));
 }
