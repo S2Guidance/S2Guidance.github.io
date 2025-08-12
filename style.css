@@ -8,7 +8,7 @@ html, body {
     color: #ffffff; /* 默认文字颜色为白色 */
     
     /* 关键的背景图片设置 */
-    background-image: url('background.png'); /* 引用你的背景图片 */
+    background-image: url('background.pdf'); /* 引用你的背景图片 */
     background-size: cover; /* 铺满整个屏幕，保持比例 */
     background-position: center center; /* 图片居中显示 */
     background-repeat: no-repeat; /* 图片不重复 */
