@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S²-Guidance Logo 展示 (辉光增强版)</title>
+    <title>S²-Guidance Logo 展示</title>
     <style>
         /* --- 全局和背景样式 --- */
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #0a0a14; /* 使用一个更深邃的背景色来增强对比 */
+            background-color: #0d0d1a; /* 深邃的蓝黑色背景 */
             color: #e0e0e0;
             display: flex;
             justify-content: center;
@@ -17,21 +17,21 @@
             min-height: 100vh;
             /* 使用一个微妙的网格背景来更好地展示logo的半透明效果 */
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 25px 25px; /* 网格稍微拉大一些 */
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
         /* --- 主要内容容器 --- */
         .container {
             text-align: center;
-            background-color: rgba(18, 18, 32, 0.5); /* 降低一点不透明度 */
+            background-color: rgba(18, 18, 32, 0.6); /* 半透明的深色卡片 */
             padding: 40px 60px;
             border-radius: 20px;
-            border: 1px solid rgba(100, 180, 255, 0.15); /* 边框更细微 */
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(12px); /* 增强毛玻璃效果 */
-            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(100, 180, 255, 0.2); /* 边框与logo颜色呼应 */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px); /* 毛玻璃效果，增强层次感 */
+            -webkit-backdrop-filter: blur(10px);
             max-width: 90%;
         }
 
@@ -40,21 +40,15 @@
             max-width: 100%;
             height: auto;
             margin-bottom: 25px;
-            
-            /* <<<--- 核心改动：用CSS滤镜增强辉光效果 --- */
-            /* 
-             * drop-shadow(x偏移 y偏移 模糊半径 颜色)
-             * 它会沿着图像内容的边缘创建阴影，非常适合为PNG图像添加辉光。
-             * 这里的颜色(130, 170, 255)是一种淡蓝色，与S²的辉光颜色匹配。
-             * 0.4是透明度，控制辉光的强度。您可以调整 20px 和 0.4 来改变效果。
-             */
-            filter: drop-shadow(0 0 20px rgba(130, 170, 255, 0.4));
+            /* 添加一个轻微的投影，使其看起来浮动 */
+            filter: drop-shadow(0 0 25px rgba(150, 180, 255, 0.2));
         }
 
         /* --- 标题和文本样式 --- */
         h1 {
             font-size: 2.5rem;
             margin: 0 0 10px 0;
+            /* 创建与Logo S²部分相似的渐变色文本 */
             background: linear-gradient(45deg, #64b4ff, #c864ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -68,7 +62,7 @@
             line-height: 1.6;
             max-width: 700px;
             margin: 0 auto;
-            color: #b0b8d1;
+            color: #b0b8d1; /* 柔和的蓝灰色文本 */
         }
         
         /* --- 响应式设计 --- */
@@ -89,7 +83,8 @@
 
     <div class="container">
         <!-- 
-          图片引用不变, 确保 'S2_Guidance_Logo_Semi_Transparent.png' 
+          这里引用由Python脚本生成的图片。
+          请确保图片 'S2_Guidance_Logo_Semi_Transparent.png' 
           与这个HTML文件在同一个目录下。
         -->
         <img src="S2_Guidance_Logo_Semi_Transparent.png" alt="S²-Guidance Logo" class="logo-image">
