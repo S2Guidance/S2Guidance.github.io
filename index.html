@@ -1,188 +1,87 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S²-Guidance Logo 网页实现</title>
+    <title>S² Guidance Logo</title>
     <style>
-        /* 1. 导入字体 (与Python代码中的Poppins-Bold一致) */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-
-        /* 基础重置 */
-        body, html {
+        /* 设置页面全宽全高以及默认样式 */
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000; /* 如果图片加载失败，显示黑色背景 */
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden; /* 防止辉光效果导致滚动条出现 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #121020; /* 背景备用色 */
         }
 
-        /* 
-         * 2. 创建主容器，作为所有图层的画布 
-         *    - 底层: 背景图
-         *    - 中层: 半透明遮罩
-         *    - 顶层: Logo
-         */
-        .s2-guidance-banner {
-            width: 100%;
-            height: 100vh; /* 占满整个视口高度 */
-            position: relative; /* 作为绝对定位子元素的参照物 */
-            display: grid; /* 使用Grid布局轻松实现垂直水平居中 */
-            place-items: center;
-
-            /* 底层: 背景图片 */
-            background-image: url('./background.jpg'); /* <<<--- 请替换为您自己的背景图路径 */
-            background-size: cover;
-            background-position: center;
+        /* 容器，居中包含内容 */
+        .container {
+            position: relative;
+            width: 1400px;
+            height: 600px;
         }
 
-        /* 
-         * 3. 创建半透明遮罩层 (Middle Layer) 
-         *    - 使用伪元素 ::before 来创建，无需额外HTML标签
-         */
-        .s2-guidance-banner::before {
-            content: '';
+        /* 背景图片覆盖 */
+        .background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* 确保在背景图之上 */
-            
-            /* 
-             * 核心: 创建半透明渐变
-             * 颜色值来自Python脚本: 
-             *   TOP: (18, 18, 32) -> #121220
-             *   BOTTOM: (32, 32, 64) -> #202040
-             *   Alpha: bg_alpha=236 (236/255 ≈ 0.925)
-             */
-            background: linear-gradient(
-                to bottom,
-                rgba(18, 18, 32, 0.925),
-                rgba(32, 32, 64, 0.925)
-            );
+            background: url('background.jpg') no-repeat center center / cover;
+            z-index: 1;
         }
 
-        /* 
-         * 4. Logo容器 (Top Layer)
-         *    这是实现“穿透”效果的关键
-         */
-        .logo-container {
-            position: relative;
-            z-index: 2; /* 确保在遮罩层之上 */
-            display: flex;
-            align-items: flex-start; /* 使'S'和'2'顶部对齐 */
-            justify-content: center;
-
-            /* 
-             * 魔法属性! 
-             * 'color-dodge' 混合模式使Logo的亮色区域“穿透”下方的深色遮罩，
-             * 从而照亮背景，产生辉光和融合效果。
-             */
-            mix-blend-mode: color-dodge;
+        /* 半透明蒙版 */
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(18, 18, 32, 0.5), rgba(32, 32, 64, 0.5));
+            z-index: 2;
         }
 
-        /* 5. Logo文本通用样式 */
-        .logo-text {
-            font-weight: 700;
-            text-transform: none; /* 保持大小写 */
-            letter-spacing: -0.02em;
-            color: transparent; /* 关键: 使文字透明，露出背景 */
-            -webkit-background-clip: text;
-            background-clip: text;
+        /* Logo样式 */
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Poppins', sans-serif; /* 确保字体文件已导入 */
+            text-align: center;
+            z-index: 3;
         }
 
-        /* 6. “S²”部分的样式 */
-        .s2-group {
-            display: flex;
-            align-items: flex-start;
-            margin-right: 0.1em; /* 与Guidance之间的间距 */
-        }
-        
-        .s-char {
-            font-size: 18vw; /* 使用视口宽度单位实现响应式大小 */
-            line-height: 0.8;
-            
-            /* 
-             * 'S'的颜色渐变，来自Python脚本
-             * 角度基于 y*0.8 的对角线估算
-             * COLOR_T2I: (100, 180, 255) -> #64b4ff
-             * COLOR_T2V: (200, 100, 255) -> #c864ff
-             */
-            background-image: linear-gradient(
-                130deg, 
-                #64b4ff, 
-                #c864ff
-            );
+        .logo .s2 {
+            font-size: 200px;
+            font-weight: bold;
+            color: rgba(255, 200, 255, 0.9);
+            text-shadow: 0 0 20px rgba(200, 180, 255, 0.8), 0 0 40px rgba(200, 180, 255, 0.6);
         }
 
-        .script-char {
-            font-size: 6vw;
-            line-height: 1;
-            margin-left: -0.2em; /* 微调'2'的位置 */
-            /* '2'的颜色与'S'的渐变终点色接近 */
-            background-image: linear-gradient(130deg, #b08aff, #c864ff);
+        .logo .guidance {
+            font-size: 80px;
+            color: rgba(255, 255, 200, 0.9);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 255, 200, 0.8), 0 0 40px rgba(255, 255, 200, 0.6);
         }
-
-        /* 7. “Guidance”部分的样式 */
-        .guidance-text {
-            font-size: 13vw;
-            line-height: 0.9;
-            
-            /*
-             * 模拟粒子效果:
-             * 1. 叠加一层噪音纹理图片
-             * 2. 在纹理之上叠加一层颜色渐变
-             * 3. background-blend-mode让它们混合
-             */
-            background-image: 
-                linear-gradient(100deg, #64b4ff 20%, #c864ff 80%),
-                url('https://i.ibb.co/4Z1T5FT/noise-texture.png'); /* 一个公开的噪音纹理图 */
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: color; /* 用渐变色为纹理上色 */
-        }
-        
-        /*
-         * 8. 添加辉光效果 (Glow)
-         *    使用 text-shadow 模拟
-         *    颜色和模糊度参考Python脚本中的GaussianBlur
-         */
-        .s2-group {
-            /* 对应 S² 的辉光 */
-            text-shadow: 0 0 30px rgba(200, 200, 255, 0.15);
-        }
-        
-        .guidance-text {
-            /* 对应 Guidance 的辉光 */
-            text-shadow: 0 0 25px rgba(200, 200, 255, 0.12);
-        }
-
-        /* 响应式调整：在小屏幕上缩小字体 */
-        @media (max-width: 768px) {
-            .s-char { font-size: 25vw; }
-            .script-char { font-size: 9vw; }
-            .guidance-text { font-size: 18vw; }
-        }
-
     </style>
 </head>
 <body>
-
-    <div class="s2-guidance-banner">
-        <!-- Logo容器 -->
-        <div class="logo-container">
-            <!-- 为了精细控制布局，将Logo分为两组 -->
-            <div class="s2-group">
-                <span class="logo-text s-char">S</span>
-                <span class="logo-text script-char">2</span>
-            </div>
-            <span class="logo-text guidance-text">Guidance</span>
+    <div class="container">
+        <!-- 背景图层 -->
+        <div class="background"></div>
+        <!-- 半透明蒙版 -->
+        <div class="mask"></div>
+        <!-- Logo文本 -->
+        <div class="logo">
+            <div class="s2">S²</div>
+            <div class="guidance">Guidance</div>
         </div>
     </div>
-
 </body>
 </html>
-
