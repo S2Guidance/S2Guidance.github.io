@@ -9,12 +9,12 @@ body {
     min-height: 100vh;
     overflow: hidden;
 
-    /* 核心改动：设置图片网格背景 */
-    /* 请将你的期望结果图命名为 background-grid.jpg 并放在同级目录 */
+    /* 核心：设置图片网格背景，并叠加一个半透明的深色渐变层 */
+    /* 这完美复刻了你的 Python 代码中 bg_alpha=236 的效果 */
     background-image: 
-        /* 1. 添加一个半透明的深色叠加层，让文字更突出 */
-        linear-gradient(rgba(12, 12, 20, 0.8), rgba(12, 12, 20, 0.8)),
-        /* 2. 底层是我们的图片网格 */
+        /* 1. 半透明深色渐变叠加层 */
+        linear-gradient(to bottom, rgba(18, 18, 32, 0.925), rgba(32, 32, 64, 0.925)),
+        /* 2. 底层是我们的图片网格 (请确保图片存在) */
         url('background.jpg');
     background-size: cover;
     background-position: center;
@@ -28,54 +28,53 @@ body {
     /* 使用 baseline 对齐，让 S 和 Guidance 的基线对齐，视觉效果更好 */
     align-items: baseline; 
     gap: 30px; /* S² 和 Guidance 之间的间距 */
-    transform: scale(0.9); /* 稍微缩小以适应不同屏幕 */
 }
 
 /* "S²" 文本样式容器 */
 .s2-text {
-    font-size: 300px;
+    font-size: 300px; /* 对应 Python 中的 s_font size=300 */
     font-weight: 700;
     line-height: 1;
     position: relative;
-    display: flex; /* 使用 flexbox 来对齐 S 和 2 */
-    align-items: flex-start; /* 顶部对齐 */
+    display: flex; 
+    align-items: flex-start;
     
-    /* 对角渐变填充 */
+    /* 对角渐变填充，复刻 Python 中的颜色分割 */
     background: linear-gradient(130deg, #64B4FF, #C864FF);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 
-    /* 辉光效果 */
+    /* 辉光效果，复刻 Python 中的 GaussianBlur */
     text-shadow: 0 0 40px rgba(200, 200, 255, 0.5);
 }
 
 /* "²" 的上标样式修正 */
 .s2-text .superscript {
-    font-size: 0.4em; /* 大小是父元素(S)的40%，即 120px */
+    font-size: 0.4em; /* 对应 Python 中的 script_font size=120 (120/300=0.4) */
     line-height: 1.5; /* 调整行高，稍微将 '2' 向上推 */
-    margin-left: -0.15em; /* 负边距让 '2' 更贴近 'S' */
+    margin-left: -0.1em; /* 负边距让 '2' 更贴近 'S' */
 }
 
-/* "Guidance" 文本样式 */
+/* "Guidance" 文本样式，直接实现期望效果图 */
 .guidance-text {
-    font-size: 250px;
+    font-size: 250px; /* 尺寸可以微调，这里比 Python 的 200px 稍大以匹配视觉 */
     font-weight: 700;
 
-    /* 核心技巧：实现内发光和半透明填充 */
+    /* --- 核心技巧：实现内发光和半透明填充 --- */
 
-    /* 1. 设置半透明的文字填充色 */
+    /* 1. 设置半透明的文字填充色，让背景图片可以透出来 */
     color: rgba(255, 255, 255, 0.6);
 
     /* 2. 定义一个透明的描边，它会“拓宽”文字区域 */
     -webkit-text-stroke: 4px transparent;
     
-    /* 3. 将彩色渐变作为背景，并裁剪到文字形状 */
-    /* 这个渐变会填充文字本身和透明的描边，从而形成“内发光” */
+    /* 3. 将彩色渐变作为背景，并裁剪到文字形状（包括描边区域） */
+    /* 这个渐变会填充描边，从而形成“内发光” */
     background: linear-gradient(130deg, #64B4FF, #C864FF);
     -webkit-background-clip: text;
     background-clip: text;
 
     /* 4. 添加外部的辉光效果 */
-    text-shadow: 0 0 50px rgba(200, 200, 255, 0.6);
+    text-shadow: 0 0 60px rgba(200, 200, 255, 0.6);
 }
