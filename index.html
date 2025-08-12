@@ -3,96 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S²-Guidance Logo 展示</title>
+    <title>S² Guidance Logo Showcase</title>
+    
+    <!-- 1. 引入 Poppins 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- 全局和背景样式 --- */
-        body {
+        /* --- 全局样式重置 --- */
+        body, html {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #0d0d1a; /* 深邃的蓝黑色背景 */
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            /* 使用一个微妙的网格背景来更好地展示logo的半透明效果 */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121220; /* 页面背景色，防止图片加载时闪烁 */
         }
 
-        /* --- 主要内容容器 --- */
-        .container {
+        /* --- 核心容器 --- */
+        .hero-container {
+            /* 1. 设置底层背景图 */
+            background-image: url('background.jpg'); /* <<<--- 请将背景图命名为 background.jpg 并放在同目录下 */
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* 占满整个视口高度 */
+            width: 100%;
+
+            /* 关键：使用 Grid 布局轻松实现内容垂直和水平居中 */
+            display: grid;
+            place-items: center;
+
+            /* 关键：创建新的堆叠上下文（Stacking Context） */
+            /* 这可以防止 mix-blend-mode 影响到容器外的元素，非常重要！ */
+            position: relative;
+            isolation: isolate; 
+        }
+
+        /* --- 2. 创建半透明遮罩层 (使用伪元素 ::before) --- */
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            
+            /* 从 Python 代码中提取的渐变色和透明度 */
+            /* BG_COLOR_TOP = (18, 18, 32), BG_COLOR_BOTTOM = (32, 32, 64) */
+            /* bg_alpha = 236 -> 236/255 ≈ 0.925 */
+            background: linear-gradient(
+                to bottom, 
+                rgba(18, 18, 32, 0.925), 
+                rgba(32, 32, 64, 0.925)
+            );
+            
+            z-index: 1; /* 确保遮罩在背景图之上 */
+        }
+
+        /* --- 3. 创建顶层 Logo (镂空效果) --- */
+        .logo-knockout {
+            /* 从 Python 代码中提取字体大小作为参考，并使用 vw 单位使其自适应 */
+            font-size: clamp(40px, 15vw, 200px); /* 字体大小在40px到200px之间动态变化 */
+            font-weight: 700;
+            color: white; /* Logo 本身的颜色，白色与 screen 模式配合效果最好 */
             text-align: center;
-            background-color: rgba(18, 18, 32, 0.6); /* 半透明的深色卡片 */
-            padding: 40px 60px;
-            border-radius: 20px;
-            border: 1px solid rgba(100, 180, 255, 0.2); /* 边框与logo颜色呼应 */
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px); /* 毛玻璃效果，增强层次感 */
-            -webkit-backdrop-filter: blur(10px);
-            max-width: 90%;
+            
+            z-index: 2; /* 确保 Logo 在遮罩层之上 */
+            
+            /* 魔法发生的地方：混合模式！ */
+            /* 'screen' 模式会将白色文字区域下方的图层（遮罩层）变亮，
+               效果上就像是“擦除”了遮罩，透出了最底层的背景。*/
+            mix-blend-mode: screen;
+
+            /* 添加辉光效果，模仿 Python 代码中的 ImageFilter.GaussianBlur */
+            text-shadow: 0 0 15px rgba(200, 200, 255, 0.4), 
+                         0 0 30px rgba(200, 200, 255, 0.3);
         }
 
-        /* --- Logo 图片样式 --- */
-        .logo-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 25px;
-            /* 添加一个轻微的投影，使其看起来浮动 */
-            filter: drop-shadow(0 0 25px rgba(150, 180, 255, 0.2));
+        /* 针对上标 '2' 的微调 */
+        .logo-knockout sup {
+            font-size: 0.5em; /* 缩小上标字体大小 */
+            vertical-align: super;
+            margin-left: -0.2em; /* 轻微调整间距使其更紧凑 */
         }
 
-        /* --- 标题和文本样式 --- */
-        h1 {
-            font-size: 2.5rem;
-            margin: 0 0 10px 0;
-            /* 创建与Logo S²部分相似的渐变色文本 */
-            background: linear-gradient(45deg, #64b4ff, #c864ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #b0b8d1; /* 柔和的蓝灰色文本 */
-        }
-        
-        /* --- 响应式设计 --- */
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 25px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            p {
-                font-size: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- 
-          这里引用由Python脚本生成的图片。
-          请确保图片 'S2_Guidance_Logo_Semi_Transparent.png' 
-          与这个HTML文件在同一个目录下。
-        -->
-        <img src="S2_Guidance_Logo_Semi_Transparent.png" alt="S²-Guidance Logo" class="logo-image">
-        
-        <h1>S²-Guidance</h1>
-        <p>
-            这是一个由 Python 的 Pillow 库动态生成的 Logo。它展示了高级图像处理技术，包括渐变背景、字体渲染、蒙版操作、粒子效果以及辉光滤镜，最终呈现出一个具有未来感和科技感的视觉标识。
-        </p>
+    <div class="hero-container">
+        <h1 class="logo-knockout">
+            S<sup>2</sup> Guidance
+        </h1>
     </div>
 
 </body>
