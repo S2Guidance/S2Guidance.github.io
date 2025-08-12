@@ -3,37 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S²-Guidance Logo</title>
-    <!-- 1. 引入 'Poppins' 字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    
-    <!-- 2. 链接样式表 -->
-    <link rel="stylesheet" href="style.css">
+    <title>S²-Guidance Logo 展示</title>
+    <style>
+        /* --- 全局和背景样式 --- */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #0d0d1a; /* 深邃的蓝黑色背景 */
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* 使用一个微妙的网格背景来更好地展示logo的半透明效果 */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* --- 主要内容容器 --- */
+        .container {
+            text-align: center;
+            background-color: rgba(18, 18, 32, 0.6); /* 半透明的深色卡片 */
+            padding: 40px 60px;
+            border-radius: 20px;
+            border: 1px solid rgba(100, 180, 255, 0.2); /* 边框与logo颜色呼应 */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px); /* 毛玻璃效果，增强层次感 */
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 90%;
+        }
+
+        /* --- Logo 图片样式 --- */
+        .logo-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 25px;
+            /* 添加一个轻微的投影，使其看起来浮动 */
+            filter: drop-shadow(0 0 25px rgba(150, 180, 255, 0.2));
+        }
+
+        /* --- 标题和文本样式 --- */
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            /* 创建与Logo S²部分相似的渐变色文本 */
+            background: linear-gradient(45deg, #64b4ff, #c864ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #b0b8d1; /* 柔和的蓝灰色文本 */
+        }
+        
+        /* --- 响应式设计 --- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 背景图案 -->
-    <div class="background-pattern"></div>
-
-    <!-- Logo 主容器 -->
-    <div class="logo-container">
+    <div class="container">
+        <!-- 
+          这里引用由Python脚本生成的图片。
+          请确保图片 'S2_Guidance_Logo_Semi_Transparent.png' 
+          与这个HTML文件在同一个目录下。
+        -->
+        <img src="S2_Guidance_Logo_Semi_Transparent.png" alt="S²-Guidance Logo" class="logo-image">
         
-        <!-- S² 部分的容器 -->
-        <div class="s2-container">
-            <!-- "2" 将由 CSS 伪元素生成 -->
-            <span class="s-text">S</span>
-        </div>
-
-        <!-- Guidance 部分的容器，由 JS 填充 -->
-        <div class="guidance-container">
-            <!-- Canvas 将在这里被 JS 创建并插入 -->
-        </div>
-
+        <h1>S²-Guidance</h1>
+        <p>
+            这是一个由 Python 的 Pillow 库动态生成的 Logo。它展示了高级图像处理技术，包括渐变背景、字体渲染、蒙版操作、粒子效果以及辉光滤镜，最终呈现出一个具有未来感和科技感的视觉标识。
+        </p>
     </div>
 
-    <!-- 3. 链接 JavaScript 文件，必须放在 body 结尾 -->
-    <script src="script.js"></script>
 </body>
 </html>
