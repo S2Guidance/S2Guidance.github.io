@@ -12,7 +12,7 @@ html, body {
      * 我们在这里同时指定了两个背景图片。
      * 第一个 (top.png) 在最上层，第二个 (bottom.png) 在最下层。
      */
-    background-image: url('./top.png'), url('./bottom.png');
+    background-image: url('./top.png'), url('./bottom.jpg');
     
     /* 
      * 为每个图层独立设置属性，用逗号分隔。
