@@ -15,7 +15,7 @@ body {
         /* 1. 添加一个半透明的深色叠加层，让文字更突出 */
         linear-gradient(rgba(12, 12, 20, 0.8), rgba(12, 12, 20, 0.8)),
         /* 2. 底层是我们的图片网格 */
-        url('background-grid.jpg');
+        url('background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
