@@ -2,96 +2,80 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #0c0c14; /* 一个深色背景来衬托logo */
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden; /* 隐藏溢出的内容 */
+    overflow: hidden;
+
+    /* 核心改动：设置图片网格背景 */
+    /* 请将你的期望结果图命名为 background-grid.jpg 并放在同级目录 */
+    background-image: 
+        /* 1. 添加一个半透明的深色叠加层，让文字更突出 */
+        linear-gradient(rgba(12, 12, 20, 0.8), rgba(12, 12, 20, 0.8)),
+        /* 2. 底层是我们的图片网格 */
+        url('background-grid.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* 一个简单的背景图案，用以展示 Logo 的半透明效果 */
-.background-pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: -1;
-}
-
-/* Logo 主容器，对应 Python 中的画布 */
+/* Logo 主容器 */
 .logo-container {
-    width: 1400px;
-    height: 600px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 20px; /* S² 和 Guidance 之间的间距 */
-    position: relative; /* 用于定位内部元素 */
-
-    /* 核心改动：复刻半透明渐变背景 */
-    /* background: linear-gradient(to bottom, #121220, #202040); */
-    /* 使用 rgba 来实现半透明，236/255 ≈ 0.925 */
-    background: linear-gradient(
-        to bottom, 
-        rgba(18, 18, 32, 0.925), 
-        rgba(32, 32, 64, 0.925)
-    );
-    border-radius: 20px; /* 一点圆角，让它看起来更精致 */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 添加一点阴影 */
+    /* 使用 baseline 对齐，让 S 和 Guidance 的基线对齐，视觉效果更好 */
+    align-items: baseline; 
+    gap: 30px; /* S² 和 Guidance 之间的间距 */
+    transform: scale(0.9); /* 稍微缩小以适应不同屏幕 */
 }
 
-/* "S²" 文本样式 */
+/* "S²" 文本样式容器 */
 .s2-text {
     font-size: 300px;
-    font-weight: 700; /* 'Poppins-Bold' 对应 700 */
+    font-weight: 700;
     line-height: 1;
     position: relative;
+    display: flex; /* 使用 flexbox 来对齐 S 和 2 */
+    align-items: flex-start; /* 顶部对齐 */
     
-    /* 核心逻辑：复刻 S² 的对角渐变填充 */
-    /* 1. 定义渐变背景 */
-    background: linear-gradient(
-        130deg,  /* 这个角度近似于 Python 脚本中的 x - y*0.8 > C */
-        #64B4FF, /* COLOR_T2I: (100, 180, 255) */
-        #C864FF  /* COLOR_T2V: (200, 100, 255) */
-    );
-    /* 2. 将背景裁剪为文字的形状 */
+    /* 对角渐变填充 */
+    background: linear-gradient(130deg, #64B4FF, #C864FF);
     -webkit-background-clip: text;
     background-clip: text;
-    /* 3. 让文字本身变透明，从而显示出背景 */
     color: transparent;
 
-    /* 核心逻辑：复刻辉光效果 (GaussianBlur) */
-    /* 使用多个 text-shadow 叠加可以创造更柔和的辉光 */
-    text-shadow: 0 0 30px rgba(200, 200, 255, 0.4);
+    /* 辉光效果 */
+    text-shadow: 0 0 40px rgba(200, 200, 255, 0.5);
 }
 
-/* "²" 的上标样式调整 */
-.s2-text sup {
-    font-size: 120px;
-    /* 调整上标的位置，使其更贴近 'S' */
-    position: relative;
-    top: -1.1em;
-    left: -0.15em;
+/* "²" 的上标样式修正 */
+.s2-text .superscript {
+    font-size: 0.4em; /* 大小是父元素(S)的40%，即 120px */
+    line-height: 1.5; /* 调整行高，稍微将 '2' 向上推 */
+    margin-left: -0.15em; /* 负边距让 '2' 更贴近 'S' */
 }
 
+/* "Guidance" 文本样式 */
+.guidance-text {
+    font-size: 250px;
+    font-weight: 700;
 
-/* "Guidance" 部分的容器 */
-.guidance-container {
-    /* 尺寸由 JS 中的 Canvas 决定，这里只是一个占位符 */
-    position: relative;
-    width: 820px; /* 大致估算一个宽度 */
-    height: 250px; /* 大致估算一个高度 */
-    margin-top: 30px; /* 稍微向下偏移以匹配视觉效果 */
-}
+    /* 核心技巧：实现内发光和半透明填充 */
 
-/* Canvas 元素将由 JS 添加，我们预先设置好样式 */
-#guidanceCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /* 1. 设置半透明的文字填充色 */
+    color: rgba(255, 255, 255, 0.6);
+
+    /* 2. 定义一个透明的描边，它会“拓宽”文字区域 */
+    -webkit-text-stroke: 4px transparent;
+    
+    /* 3. 将彩色渐变作为背景，并裁剪到文字形状 */
+    /* 这个渐变会填充文字本身和透明的描边，从而形成“内发光” */
+    background: linear-gradient(130deg, #64B4FF, #C864FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* 4. 添加外部的辉光效果 */
+    text-shadow: 0 0 50px rgba(200, 200, 255, 0.6);
 }
