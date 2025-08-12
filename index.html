@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S²-Guidance Logo</title>
-    <!-- 引入 'Poppins' 字体 -->
+    <!-- 1. 引入与 Python 脚本中使用的 'Poppins' 字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     
-    <!-- 链接样式表 -->
+    <!-- 2. 链接我们自己的样式表 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 用于展示半透明效果的背景图案 -->
+    <!-- 为了展示 Logo 的半透明效果，给 body 一个背景 -->
     <div class="background-pattern"></div>
 
-    <!-- Logo 主容器 -->
+    <!-- Logo 的主容器，对应 Python 中的 final_image -->
     <div class="logo-container">
         
-        <!-- S 元素。"2" 将由 CSS 的伪元素生成 -->
-        <div class="s-logo">S</div>
+        <!-- S² 部分，将用纯 CSS 实现 -->
+        <div class="s2-text">S<sup>2</sup></div>
+
+        <!-- Guidance 部分的容器，将由 JavaScript 和 Canvas 绘制 -->
+        <div class="guidance-container">
+            <!-- Canvas 将在这里被 JS 创建并插入 -->
+        </div>
 
     </div>
 
-    <!-- 不再需要 JavaScript 文件 -->
+    <!-- 3. 链接我们的 JavaScript 文件 (放在 body 结尾以确保 DOM 加载完毕) -->
+    <script src="script.js"></script>
 </body>
 </html>
