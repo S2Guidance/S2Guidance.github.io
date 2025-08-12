@@ -1,56 +1,77 @@
-/* --- 全局样式和背景设置 --- */
+/* --- Global Styles & Background (No Change) --- */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Source Serif Pro', serif;
-    background-color: #121220; /* 深紫色背景，作为图片加载失败时的后备 */
+    background-color: #121220;
     color: #ffffff;
-    
-    /* 关键的背景图片设置，现在这是唯一的视觉主体 */
-    background-image: url('background.pdf'); /* 引用你的背景图片 */
+    background-image: url('background.pdf');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* 固定背景，效果很酷 */
+    background-attachment: fixed;
 }
 
-/* --- 主容器，负责布局 --- */
+/* --- Main Container (No Change) --- */
 .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* 至少和屏幕一样高 */
-    
-    /* 核心布局魔法：将所有内容推向底部 */
-    justify-content: flex-end; 
-    
-    align-items: center; /* 水平居中内容 */
+    min-height: 100vh;
+    justify-content: flex-end;
+    align-items: center;
     padding: 2rem;
     box-sizing: border-box;
 }
 
-/* --- 内容包装器，所有元素的“底座” --- */
+/* --- Content Wrapper (Adjusted Padding) --- */
 .content-wrapper {
-    background-color: rgba(18, 18, 32, 0.75); /* 半透明深紫色底座 */
-    backdrop-filter: blur(10px); /* 强烈的毛玻璃效果 */
-    -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
-    
-    border-radius: 16px; /* 更大的圆角 */
-    padding: 2rem 3rem;
+    background-color: rgba(18, 18, 32, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    /* MODIFIED: Increased padding to give more breathing room */
+    padding: 2.5rem 3rem; 
     width: 100%;
-    max-width: 950px; /* 限制最大宽度 */
+    max-width: 950px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
-/* --- 按钮样式 (样式不变，但调整了间距) --- */
+/* --- NEW: 标题样式 (科技感渐变风格) --- */
+.paper-title {
+    /* 1. 切换为现代无衬线字体，与按钮风格统一 */
+    font-family: 'Poppins', sans-serif; 
+    font-size: 1.8rem; /* 稍微增大字体，更具冲击力 */
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.5px; /* 微调字间距，提升设计感 */
+    margin: 0 0 2rem 0; /* 调整下方间距 */
+
+    /* 2. 核心：应用从蓝到紫的渐变色作为文字背景 */
+    background: linear-gradient(90deg, #8cbefc, #c864ff);
+    
+    /* 3. 让文字本身变透明，以便显示背景渐变 */
+    color: transparent;
+    
+    /* 4. 关键！将背景裁剪为文字的形状 */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* 5. 添加微弱的紫色辉光效果 */
+    text-shadow: 0 0 12px rgba(200, 100, 255, 0.3);
+}
+
+
+/* --- Button Styles (Adjusted Margin) --- */
 .button-container {
     display: flex;
-    justify-content: center; /* 按钮居中 */
+    justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 2rem; /* 按钮和作者之间的间距 */
-    flex-wrap: wrap; /* 屏幕窄时按钮自动换行 */
+    /* MODIFIED: Margin adjusted for new layout */
+    margin-bottom: 2.5rem; 
+    flex-wrap: wrap;
 }
 
 .action-button {
@@ -73,27 +94,40 @@ html, body {
     box-shadow: 0 8px 25px rgba(170, 70, 255, 0.7);
 }
 
-/* --- 作者和单位信息样式 (样式微调) --- */
+/* --- Author and Affiliation Styles --- */
 .author-section {
-    /* 不再需要独立的背景和padding */
+    /* No styles needed here anymore */
 }
 
 .authors .author-line {
     display: flex;
     justify-content: center;
-    gap: 1.5rem 2.5rem; /* 调整行和列的间距 */
+    gap: 1.5rem 2.5rem;
     flex-wrap: wrap;
     margin: 0.5rem 0;
 }
 
 .authors span {
-    font-size: 1.1rem; /* 稍微调整字体大小以适应容器 */
+    font-size: 1.1rem;
     font-weight: 700;
     white-space: nowrap;
 }
 
+/* --- NEW: Symbol Notes Style --- */
+.symbol-notes {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin: 2rem 0; /* Vertical spacing */
+    /* This makes the block itself centered, but the text inside is left-aligned */
+    display: inline-block;
+    text-align: left;
+}
+
+.symbol-notes p {
+    margin: 0.3rem 0; /* Spacing between each note line */
+}
+
 .affiliations {
-    margin-top: 1.5rem;
     font-size: 1rem;
     color: #cccccc;
 }
