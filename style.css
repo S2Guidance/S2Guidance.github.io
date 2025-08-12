@@ -26,15 +26,16 @@ body {
 .logo-container {
     width: 1400px;
     height: 600px;
+    display: flex;
+    /* --- 核心修正 1：左对齐并垂直居中 --- */
+    justify-content: flex-start; 
+    align-items: center;
+    /* --- 核心修正 2：增加左边距，让 'S' 不会贴边 --- */
+    padding-left: 150px; 
+    box-sizing: border-box; /* 确保 padding 不会增加总宽度 */
     position: relative;
     
-    /* --- 核心修正 1：使用 Flexbox 实现完美居中 --- */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* S² 和 Guidance 之间的间距 */
-
-    /* 半透明渐变背景 */
+    /* 半透明渐变背景 (与之前相同) */
     background: linear-gradient(
         to bottom, 
         rgba(18, 18, 32, 0.925), 
@@ -44,54 +45,40 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* S² 的容器，用于定位 */
-.s2-container {
-    position: relative;
-    /* 调整一下垂直对齐，使其与粒子文字更协调 */
-    padding-bottom: 20px; 
-}
-
 /* "S" 文本样式 */
-.s-text {
+.s-logo {
     font-size: 300px;
     font-weight: 700;
     line-height: 1;
-    position: relative; /* 必须，为了 ::after 伪元素定位 */
+    position: relative; /* 为了定位伪元素 "2" */
     
-    /* 对角渐变填充 */
+    /* 对角渐变填充 (与之前相同) */
     background: linear-gradient(
         130deg, 
-        #64B4FF, /* COLOR_T2I: (100, 180, 255) */
-        #C864FF  /* COLOR_T2V: (200, 100, 255) */
+        #64B4FF, /* (100, 180, 255) */
+        #C864FF  /* (200, 100, 255) */
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 
-    /* S的辉光效果 */
-    text-shadow: 0 0 45px rgba(200, 200, 255, 0.3);
+    /* 辉光效果 (微调 alpha 值) */
+    text-shadow: 0 0 40px rgba(200, 200, 255, 0.25);
 }
 
-/* --- 核心修正 2：使用 ::after 创建模糊的 "2" --- */
-.s-text::after {
+/* --- 核心修正 3：使用 ::after 伪元素创建模糊的 "2" --- */
+.s-logo::after {
     content: '2';
     position: absolute;
-    font-size: 120px; /* 匹配 script_font size */
-    font-weight: 700;
+    font-size: 120px; /* 匹配 Python 脚本中的 script_font size */
     
-    /* 精确定位 */
-    top: -25px; 
-    right: -80px;
+    /* 精确定位 "2" 的位置，模拟 Python 的坐标 */
+    top: -30px; 
+    right: -70px; /* 调整此值以匹配 'S' 的形状 */
     
-    /* 关键：创建模糊、半透明的辉光效果 */
-    color: rgba(220, 220, 255, 0.4); /* 带一点蓝色的半透明白 */
-    filter: blur(6px); /* 应用高斯模糊 */
-    opacity: 0.7;
+    /* 关键：创建模糊、半透明的效果 */
+    color: rgba(255, 255, 255, 0.5); /* 半透明的白色 */
+    filter: blur(4px); /* 应用高斯模糊 */
+    
+    /* 这个 "2" 不需要渐变色，所以我们不应用 background-clip */
 }
-
-/* "Guidance" 部分的容器 */
-.guidance-container {
-    position: relative;
-    /* 尺寸由 JS 动态设置 */
-}
-
