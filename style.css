@@ -173,3 +173,96 @@ html, body {
     text-align: center;
     flex-grow: 1;
 }
+
+
+/* ====================================================== */
+/* --- Gallery 部分样式 (新的对比布局) --- */
+/* ====================================================== */
+.subsection-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c5c5c5;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(170, 70, 255, 0.5);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* "对比组" 的样式，这是新的主卡片 */
+.comparison-pair {
+    flex: 1 1 400px; /* 和原来一样，基础宽度400px，可伸缩 */
+    max-width: 450px; /* 限制最大宽度，保持每行两个 */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* 让标题和图片内容垂直排列 */
+}
+
+.comparison-pair:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4);
+}
+
+/* 用来并排摆放两个对比项的容器 */
+.comparison-content {
+    display: flex;
+    gap: 4px; /* 两个对比项之间的细微间隙 */
+}
+
+/* "对比项" 的样式，即内部的小容器 */
+.comparison-item {
+    flex: 1; /* 让两个对比项平分空间 */
+    position: relative; /* 为标签的绝对定位提供参考 */
+    overflow: hidden; /* 确保图片/视频不会溢出 */
+}
+
+.comparison-item img,
+.comparison-item video {
+    width: 100%;
+    height: 100%; /* 确保视频也能填满高度 */
+    object-fit: cover; /* 保证图片/视频填满容器，不变形 */
+    display: block;
+}
+
+/* "Baseline" / "Ours" 标签的样式 */
+.comparison-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(18, 18, 32, 0.8);
+    color: #e0e0e0;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 6px;
+    z-index: 10;
+}
+
+/* 通用标题栏样式，适用于所有卡片 */
+.comparison-pair .caption {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1; /* 确保它能填满剩余空间 */
+}
+
