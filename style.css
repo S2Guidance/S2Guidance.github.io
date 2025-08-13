@@ -32,18 +32,27 @@ html, body {
 /* --- 英雄区域内的内容包装器 (核心改动在这里) --- */
 .hero-section .content-wrapper {
     position: relative; 
-    width: 36%;
-    max-width: 950px;
+    width: 60%; /* 保留您设置的宽度 */
+    max-width: 950px; /* 保留一个最大宽度限制，防止在大屏幕上过宽 */
+    min-width: 320px; /* 增加一个最小宽度，防止在小屏幕上被过度压缩 */
     text-align: center;
     
-    /* 将这里变成一个独立的浮动卡片 */
-    background-color: rgba(18, 18, 32, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 2.5rem; /* 增加内边距，使其成为一个面板 */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    /* 关键改动：用多层背景替代单一颜色和边框 */
+    background: 
+        /* 顶层：一个从中心向边缘变暗的柔和光晕 */
+        radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.4) 100%),
+        /* 底层：基础的半透明背景色 */
+        rgba(18, 18, 32, 0.75);
+
+    /* border: 1px solid rgba(255, 255, 255, 0.1); <-- 移除这条突兀的边框 */
+    
+    border-radius: 24px; /* 可以让圆角更圆润一些 */
+    padding: 2.5rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6); /* 调整阴影使其更柔和弥散 */
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+    -webkit-backdrop-filter: blur(10px);
+}
+ /* 兼容 Safari */
 }
 
 /* --- 论文标题 --- */
