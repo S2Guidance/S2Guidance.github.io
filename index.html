@@ -11,20 +11,21 @@
 </head>
 <body>
 
-    <div class="main-container">
-        
-        <!-- ====================================================== -->
-        <!-- 1. 顶部标题区域 (您的原始代码) -->
-        <!-- ====================================================== -->
-        <div class="content-wrapper">
+    <!-- ====================================================== -->
+    <!-- 1. 全屏英雄区域 (新结构) -->
+    <!-- ====================================================== -->
+    <header class="hero-section">
+        <!-- 背景大文字 -->
+        <h1 class="hero-title-bg">S²-GUIDANCE</h1>
 
+        <div class="content-wrapper">
             <!-- 标题 -->
             <h2 class="paper-title">
                 Stochastic Self-Guidance for Training-Free Enhancement of Diffusion Models
             </h2>
 
             <!-- 作者和机构信息 -->
-            <main class="author-section">
+            <div class="author-section">
                 <div class="authors">
                     <p class="author-line">
                         <span>Chubin Chen<sup>1,2,*</sup></span>
@@ -47,7 +48,7 @@
                         <sup>3</sup>CASIA
                     </p>
                 </div>
-            </main>
+            </div>
 
             <!-- 备注信息 -->
             <div class="notes-section">
@@ -63,12 +64,14 @@
                 <a href="https://arxiv.org/abs/2312.01323" class="action-button">📄 Research Paper</a>
                 <a href="https://github.com/chubin-chen/S2-Guidance" class="action-button">💻 GitHub</a>
             </nav>
-
         </div>
+    </header>
 
-        <!-- ====================================================== -->
-        <!-- 2. 摘要 (Abstract) 区域 [更新] -->
-        <!-- ====================================================== -->
+    <!-- ====================================================== -->
+    <!-- 2. 主内容滚动区域 (新结构) -->
+    <!-- ====================================================== -->
+    <main class="main-content">
+        <!-- 摘要 (Abstract) 区域 -->
         <div class="section" id="abstract">
             <div class="content-wrapper">
                 <h2 class="section-title">Abstract</h2>
@@ -78,74 +81,52 @@
             </div>
         </div>
 
-
-        <!-- ====================================================== -->
-        <!-- 3. 方法 (Method) 区域 [新增] -->
-        <!-- ====================================================== -->
+        <!-- 方法 (Method) 区域 -->
         <div class="section" id="method">
             <div class="content-wrapper">
                 <h2 class="section-title">Method</h2>
                 <p class="section-text">
                     Our method, S²-Guidance, operates by injecting noise into intermediate feature maps of the diffusion model's U-Net and then using the model's own denoising capabilities to predict a "cleaner" version of those features. The difference between the original and the cleaner features serves as a guidance signal, steering the overall generation process towards more refined results. The diagram below illustrates the core mechanism.
                 </p>
-                <!-- !! 提醒：请将这里的 src 替换为您自己的方法图路径 !! -->
                 <img src="assets/method_overview.png" alt="Method Overview Diagram" class="method-image">
             </div>
         </div>
 
-
-        <!-- ====================================================== -->
-        <!-- 4. 画廊 (Gallery) 区域 [新增] -->
-        <!-- ====================================================== -->
+        <!-- 画廊 (Gallery) 区域 -->
         <div class="section" id="gallery">
             <div class="content-wrapper">
                 <h2 class="section-title">Gallery</h2>
-
                 <!-- 图片展示子区域 -->
-                <h3 class="subsection-title">Text to Image Generation</h3>
+                <h3 class="subsection-title">Image Results</h3>
                 <div class="gallery-grid">
-                    <!-- Gallery Item 1 (Image) -->
                     <div class="gallery-item">
-                        <!-- !! 提醒：请将这里的 src 替换为您自己的图片路径 !! -->
-                        <img src="assets/t2i.jpg" alt="Generated Image 1">
+                        <img src="assets/image_result_1.jpg" alt="Generated Image 1">
                         <p class="caption">A highly detailed castle in a mystical forest.</p>
                     </div>
-                    <!-- Gallery Item 2 (Image) -->
-                    <!-- <div class="gallery-item"> -->
-                        <!-- !! 提醒：请将这里的 src 替换为您自己的图片路径 !! -->
-                        <!-- <img src="assets/image_result_2.png" alt="Generated Image 2"> -->
-                        <!-- <p class="caption">Photorealistic portrait with expressive lighting.</p> -->
-                    <!-- </div> -->
-                    <!-- 您可以复制上面的 "gallery-item" div 来添加更多图片 -->
-                <!-- </div> -->
-
-                <!-- 视频展示子区域 -->
-                <h3 class="subsection-title">Text to Video Generation</h3>
-                <div class="gallery-grid">
-                    <!-- Gallery Item 3 (Video) -->
                     <div class="gallery-item">
-                        <!-- !! 提醒：请将这里的 src 替换为您自己的视频路径 !! -->
+                        <img src="assets/image_result_2.jpg" alt="Generated Image 2">
+                        <p class="caption">Photorealistic portrait with expressive lighting.</p>
+                    </div>
+                </div>
+                <!-- 视频展示子区域 -->
+                <h3 class="subsection-title">Video Results</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
                         <video autoplay loop muted playsinline width="100%">
-                            <source src="assets/background.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
+                            <source src="assets/video_result_1.mp4" type="video/mp4">
                         </video>
                         <p class="caption">Dynamic video generation showcasing temporal consistency.</p>
                     </div>
-                    <!-- Gallery Item 4 (Video) -->
-                    <!-- <div class="gallery-item"> -->
-                        <!-- !! 提醒：请将这里的 src 替换为您自己的视频路径 !! -->
-                        <!-- <video autoplay loop muted playsinline width="100%"> -->
-                            <!-- <source src="assets/video_result_2.mp4" type="video/mp4"> -->
-                            <!-- Your browser does not support the video tag. -->
-                        <!-- </video> -->
-                        <!-- <p class="caption">An evolving abstract animation with fluid motion.</p> -->
-                    <!-- </div> -->
-                    <!-- 您可以复制上面的 "gallery-item" div 来添加更多视频 -->
+                    <div class="gallery-item">
+                        <video autoplay loop muted playsinline width="100%">
+                            <source src="assets/video_result_2.mp4" type="video/mp4">
+                        </video>
+                        <p class="caption">An evolving abstract animation with fluid motion.</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-    </div>
+    </main>
 
 </body>
 </html>
