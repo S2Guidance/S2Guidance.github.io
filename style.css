@@ -121,11 +121,11 @@ html, body {
 .gallery-item .caption { padding: 1rem 1.2rem; font-size: 0.9rem; color: #b0b0b0; margin: 0; background: rgba(0, 0, 0, 0.2); min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; flex-grow: 1; }
 
 /* ====================================================== */
-/* --- 新增：全宽展示项的特定样式 --- */
+/* --- 全宽展示项的最终样式 --- */
 /* ====================================================== */
 
 .full-width-item {
-    /* 继承基础卡片样式以保持风格统一 */
+    /* 继承基础卡片样式 */
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
@@ -135,13 +135,26 @@ html, body {
     display: flex;
     flex-direction: column;
 
-    /* 核心：覆盖宽度限制，让它变宽 */
-    width: 100%;
-    max-width: 900px; /* 设置一个足够大的最大宽度，但又不会太宽 */
+    /* 核心：现在它会自动撑满父容器(.content-wrapper)的宽度 */
+    width: 100%; 
+    
+    /* 移除之前的 max-width，因为父容器会限制它 */
+    /* max-width: 900px;  <-- This is no longer needed */
+
+    /* 为它和下方的标题之间增加一些间距 */
+    margin-bottom: 2rem;
 }
 
-/* 确保图片和说明文字的样式也适用于新容器 */
-.full-width-item img {
+.full-width-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4);
+}
+
+/* 我们不再需要为 .full-width-item 重复定义 img 和 caption 样式，
+   因为它现在可以直接被 .gallery-item 的样式覆盖，或者我们可以明确地组合它们。
+   为了清晰，我们还是保留它们。*/
+.full-width-item img,
+.full-width-item video {
     width: 100%;
     height: auto;
     display: block;
@@ -159,10 +172,4 @@ html, body {
     justify-content: center;
     text-align: center;
     flex-grow: 1;
-}
-
-/* 为新容器也添加悬停效果 */
-.full-width-item:hover {
-    transform: translateY(-8px) scale(1.02); /* 放大效果可以稍微小一点，因为它本身就很大 */
-    box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4);
 }
