@@ -13,21 +13,22 @@ html, body {
 /* ====================================================== */
 .hero-section {
     display: flex;
-    align-items: center;
+    /* 核心改动 1: 从 center 改为 flex-end, 实现底部对齐 */
+    align-items: flex-end; 
     justify-content: center;
     min-height: 100vh;
-    padding: 2rem;
+    /* 核心改动 2: 增加底部 padding, 将内容从底部推上来 */
+    padding: 2rem 2rem 6rem 2rem; 
     box-sizing: border-box;
     position: relative; 
 
-    /* 背景图和渐变蒙版 */
+    /* 背景图和渐变蒙版 (微调渐变以匹配新布局) */
     background-image: 
-        linear-gradient(to top, rgba(10, 10, 20, 0.95) 15%, rgba(10, 10, 20, 0.2) 60%),
+        linear-gradient(to top, rgba(10, 10, 20, 1) 20%, rgba(10, 10, 20, 0.1) 60%),
         url('background_final.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    /* 核心属性：使背景固定，不随页面滚动 */
     background-attachment: fixed; 
 }
 
@@ -78,10 +79,9 @@ html, body {
 /* --- 主内容滚动区域样式 --- */
 /* ====================================================== */
 .main-content {
-    /* 核心属性：设置不透明背景色，以覆盖固定的hero背景 */
     background-color: #121220; 
-    position: relative; /* 创建新的堆叠上下文 */
-    z-index: 5; /* 确保它在hero-section之上 */
+    position: relative;
+    z-index: 5;
     padding: 2rem;
     box-sizing: border-box;
     display: flex;
