@@ -1,8 +1,8 @@
-/* --- 全局样式和背景设置 --- */
+/* --- 全局样式和背景设置 (您的原始代码) --- */
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    /* height: 100%; */ /* 移除固定高度以允许页面滚动 */
     font-family: 'Source Serif Pro', serif;
     background-color: #121220;
     color: #ffffff;
@@ -12,29 +12,32 @@ html, body {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    scroll-behavior: smooth; /* 平滑滚动效果 */
 }
 
-/* --- 主容器和渐变蒙版 --- */
+/* --- 主容器和渐变蒙版 (您的原始代码) --- */
 .main-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */ /* 改为从顶部开始 */
+    justify-content: flex-start; 
     align-items: center;
     padding: 2rem;
     box-sizing: border-box;
-    background: linear-gradient(to top, rgba(10, 10, 20, 0.9) 15%, rgba(10, 10, 20, 0) 50%);
+    /* 将渐变蒙版移到页面顶部，而不是底部 */
+    background: linear-gradient(to bottom, rgba(10, 10, 20, 0.9) 15%, rgba(10, 10, 20, 0) 50%);
 }
 
-/* --- 内容包装器 (透明布局工具) --- */
+/* --- 内容包装器 (您的原始代码) --- */
 .content-wrapper {
     width: 100%;
     max-width: 950px;
-    padding: 1rem 1rem 2rem 1rem; /* 调整padding以适应新布局 */
+    padding: 2rem 1rem; /* 统一padding */
     text-align: center;
 }
 
-/* --- 炫酷的标题样式 --- */
+/* --- 炫酷的标题样式 (您的原始代码) --- */
 .paper-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -52,11 +55,10 @@ html, body {
         0 0 30px rgba(18, 18, 32, 1);
 }
 
-/* --- 作者和机构 --- */
+/* --- 作者和机构 (您的原始代码) --- */
 .author-section {
-    margin-bottom: 1.5rem; /* 作者机构和备注之间的间距 */
+    margin-bottom: 1.5rem;
 }
-
 .authors .author-line {
     display: flex;
     justify-content: center;
@@ -64,45 +66,41 @@ html, body {
     flex-wrap: wrap;
     margin: 0.5rem 0;
 }
-
 .authors span,
 .affiliations p {
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 1);
 }
-
 .authors span {
     font-size: 1.1rem;
     font-weight: 700;
     white-space: nowrap;
 }
-
 .affiliations {
     margin-top: 1.5rem;
     font-size: 1rem;
     color: #e0e0e0;
 }
 
-/* --- 备注信息样式 (核心改动) --- */
+/* --- 备注信息样式 (您的原始代码) --- */
 .notes-section {
-    font-size: 0.8rem; /* 缩小字体 */
-    color: #b0b0b0;    /* 颜色更暗，使其更低调 */
-    margin-bottom: 2.5rem; /* 备注和按钮之间的间距 */
-    padding: 0 1rem; /* 增加左右内边距，防止贴边 */
+    font-size: 0.8rem;
+    color: #b0b0b0;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
 }
-
 .notes-section p {
     margin: 0;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 1); /* 添加阴影保证可读性 */
+    text-shadow: 0 0 8px rgba(0, 0, 0, 1);
 }
 
-/* --- 按钮样式 --- */
+/* --- 按钮样式 (您的原始代码) --- */
 .button-container {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    margin-top: 2rem; /* 给按钮和上方内容一些间距 */
 }
-
 .action-button {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -116,9 +114,111 @@ html, body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
-
 .action-button:hover {
     background: rgba(200, 100, 255, 0.8);
     transform: translateY(-3px);
     box-shadow: 0 8px 30px rgba(170, 70, 255, 0.6);
+}
+
+
+/* ====================================================== */
+/* --- 新增内容区域样式 --- */
+/* ====================================================== */
+
+/* --- 通用 Section 样式 --- */
+.section {
+    padding: 4rem 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* 添加一个细微的分割线 */
+}
+
+.section:first-of-type {
+    border-top: none; /* 第一个新section不需要顶部边框 */
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.section-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d0d0d0;
+    max-width: 800px;
+    margin: 0 auto 2rem auto; /* 居中并添加底部边距 */
+    text-align: left; /* 长文本左对齐更易读 */
+}
+
+/* --- Method 部分特定样式 --- */
+.method-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Gallery 部分样式 --- */
+.subsection-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c5c5c5;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(170, 70, 255, 0.5);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.gallery-item {
+    flex: 1 1 400px; /* 基础宽度为400px, 可伸缩 */
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden; /* 保证图片/视频的圆角效果 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item .caption {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 50px; /* 保证标题栏有一定高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1; /* 让标题栏填满剩余空间 */
 }
