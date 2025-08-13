@@ -79,32 +79,32 @@ html, body {
     background-color: #121220; 
     position: relative;
     z-index: 5;
-    /* 移除这里的内边距，让section自己控制 */
     padding: 0; 
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.main-content .content-wrapper {
-    width: 100%;
-    max-width: 950px;
-    /* 核心改动：添加 auto margin 来实现水平居中 */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2rem 1rem; 
-    text-align: center;
-}
-
-/* --- 通用 Section 样式 --- */
+/* --- 通用 Section 样式 (核心改动在这里) --- */
 .section {
-    width: 100%; /* Section本身是全宽的 */
+    width: 100%;
     padding: 4rem 2rem; /* 给section本身加上左右内边距，以防小屏幕贴边 */
     box-sizing: border-box;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* 核心改动：将 section 设为 flex 容器来居中它的子元素 */
+    display: flex;
+    justify-content: center;
 }
 .main-content .section:first-child { border-top: none; }
+
+
+/* --- 后续内容的 Content Wrapper --- */
+.main-content .content-wrapper {
+    width: 100%;
+    max-width: 950px;
+    /* margin-left/right: auto 不再需要，因为父级 .section 已经处理了居中 */
+    padding: 0 1rem; /* 调整内边距，因为外层 section 已有垂直内边距 */
+    text-align: center;
+}
 
 .section-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #e0e0e0; margin-bottom: 2rem; text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); }
 .section-text { font-size: 1.1rem; line-height: 1.8; color: #d0d0d0; max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 2rem; text-align: left; }
