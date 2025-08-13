@@ -32,7 +32,7 @@ html, body {
 /* --- 英雄区域内的内容包装器 (核心改动在这里) --- */
 .hero-section .content-wrapper {
     position: relative; 
-    width: 50%;
+    width: 36%;
     max-width: 950px;
     text-align: center;
     
