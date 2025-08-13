@@ -13,16 +13,15 @@ html, body {
 /* ====================================================== */
 .hero-section {
     display: flex;
-    /* 核心改动 1: 从 center 改为 flex-end, 实现底部对齐 */
     align-items: flex-end; 
     justify-content: center;
     min-height: 100vh;
-    /* 核心改动 2: 增加底部 padding, 将内容从底部推上来 */
-    padding: 2rem 2rem 6rem 2rem; 
+    /* 核心改动：将底部内边距从 6rem 增加到 8rem */
+    padding: 2rem 2rem 8rem 2rem; 
     box-sizing: border-box;
     position: relative; 
 
-    /* 背景图和渐变蒙版 (微调渐变以匹配新布局) */
+    /* 背景图和渐变蒙版 */
     background-image: 
         linear-gradient(to top, rgba(10, 10, 20, 1) 20%, rgba(10, 10, 20, 0.1) 60%),
         url('background_final.png');
