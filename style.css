@@ -9,15 +9,18 @@ html, body {
 }
 
 /* ====================================================== */
-/* --- 英雄区域样式 (固定背景) --- */
+/* --- 英雄区域样式 (回归第一版布局逻辑) --- */
 /* ====================================================== */
 .hero-section {
     display: flex;
-    align-items: flex-end; 
-    justify-content: center;
+    /* 核心改动 1: 恢复第一版的核心布局逻辑 */
+    flex-direction: column;   /* 主轴设为垂直 */
+    justify-content: flex-end;  /* 沿主轴（垂直）底部对齐 */
+    align-items: center;      /* 沿交叉轴（水平）居中对齐 */
+
     min-height: 100vh;
-    /* 核心改动：将底部内边距从 6rem 增加到 8rem */
-    padding: 2rem 2rem 2rem 2rem; 
+    /* 核心改动 2: 使用一个合适的底部内边距来创造空间，而不是强行推高内容 */
+    padding: 2rem 2rem 5rem 2rem; 
     box-sizing: border-box;
     position: relative; 
 
