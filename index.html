@@ -97,35 +97,90 @@
             <div class="content-wrapper">
                 <h2 class="section-title">Gallery</h2>
 
-                <!-- 图片展示子区域 -->
+                <!-- ======================================================= -->
+                <!-- Text to Image Generation - 新的对比布局 -->
+                <!-- ======================================================= -->
                 <h3 class="subsection-title">Text to Image Generation</h3>
-                
-                <!-- ======================================================= -->
-                <!-- 关键改动：移除了外层的 .gallery-grid div -->
-                <!-- 这个 .full-width-item 现在是 .content-wrapper 的直接子元素 -->
-                <!-- ======================================================= -->
-                <div class="full-width-item">
-                    <img src="assets/t2i.jpg" alt="Text to Image Generation Results">
-                    <p class="caption">Comparison of S²-Guidance with other methods like CFG, APG, and CFG++.</p>
+                <div class="gallery-grid">
+                    
+                    <!-- 对比组 1 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <!-- 对比项 1a: Baseline -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Baseline</span>
+                                <img src="assets/baseline1.jpg" alt="Baseline result for prompt 1">
+                            </div>
+                            <!-- 对比项 1b: Ours -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Ours</span>
+                                <img src="assets/ours1.jpg" alt="Our result for prompt 1">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A photorealistic image of a corgi wearing a cowboy hat."</p>
+                    </div>
+
+                    <!-- 对比组 2 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <!-- 对比项 2a: Baseline -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Baseline</span>
+                                <img src="assets/baseline2.jpg" alt="Baseline result for prompt 2">
+                            </div>
+                            <!-- 对比项 2b: Ours -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Ours</span>
+                                <img src="assets/ours2.jpg" alt="Our result for prompt 2">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A delicious-looking hamburger on a wooden table."</p>
+                    </div>
+
+                    <!-- 要添加更多对比组, 只需复制上面的整个 <div class="comparison-pair">...</div> 代码块即可 -->
+
                 </div>
 
-                <!-- 视频展示子区域 -->
+                <!-- ======================================================= -->
+                <!-- Text to Video Generation - 新的对比布局 -->
+                <!-- ======================================================= -->
                 <h3 class="subsection-title">Text to Video Generation</h3>
-                
-                <!-- .gallery-grid 保留在这里，因为它正确地包裹了多个视频项 -->
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <video autoplay loop muted playsinline width="100%">
-                            <source src="assets/cfg.mp4" type="video/mp4">
-                        </video>
-                        <p class="caption">Dynamic video generation showcasing temporal consistency.</p>
+
+                    <!-- 视频对比组 1 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <!-- 视频对比项 1a: Baseline -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Baseline</span>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video1.mp4" type="video/mp4"></video>
+                            </div>
+                            <!-- 视频对比项 1b: Ours -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Ours</span>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video1.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "An astronaut riding a horse on the moon."</p>
                     </div>
-                    <div class="gallery-item">
-                        <video autoplay loop muted playsinline width="100%">
-                            <source src="assets/background.mp4" type="video/mp4">
-                        </video>
-                        <p class="caption">An evolving abstract animation with fluid motion.</p>
+
+                    <!-- 视频对比组 2 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <!-- 视频对比项 2a: Baseline -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Baseline</span>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video2.mp4" type="video/mp4"></video>
+                            </div>
+                            <!-- 视频对比项 2b: Ours -->
+                            <div class="comparison-item">
+                                <span class="comparison-label">Ours</span>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video2.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A time-lapse of a flower blooming."</p>
                     </div>
+
                 </div>
             </div>
         </div>
