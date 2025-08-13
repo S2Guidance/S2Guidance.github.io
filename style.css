@@ -9,22 +9,17 @@ html, body {
 }
 
 /* ====================================================== */
-/* --- 英雄区域样式 (回归第一版布局逻辑) --- */
+/* --- 英雄区域样式 --- */
 /* ====================================================== */
 .hero-section {
     display: flex;
-    /* 核心改动 1: 恢复第一版的核心布局逻辑 */
-    flex-direction: column;   /* 主轴设为垂直 */
-    justify-content: flex-end;  /* 沿主轴（垂直）底部对齐 */
-    align-items: center;      /* 沿交叉轴（水平）居中对齐 */
-
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     min-height: 100vh;
-    /* 核心改动 2: 使用一个合适的底部内边距来创造空间，而不是强行推高内容 */
     padding: 2rem 2rem 5rem 2rem; 
     box-sizing: border-box;
     position: relative; 
-
-    /* 背景图和渐变蒙版 */
     background-image: 
         linear-gradient(to top, rgba(10, 10, 20, 1) 20%, rgba(10, 10, 20, 0.1) 60%),
         url('background_final.png');
@@ -84,21 +79,35 @@ html, body {
     background-color: #121220; 
     position: relative;
     z-index: 5;
-    padding: 2rem;
+    /* 移除这里的内边距，让section自己控制 */
+    padding: 0; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.main-content .content-wrapper { width: 100%; max-width: 950px; padding: 2rem 1rem; text-align: center; }
+.main-content .content-wrapper {
+    width: 100%;
+    max-width: 950px;
+    /* 核心改动：添加 auto margin 来实现水平居中 */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 1rem; 
+    text-align: center;
+}
 
 /* --- 通用 Section 样式 --- */
-.section { padding: 4rem 0; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.section {
+    width: 100%; /* Section本身是全宽的 */
+    padding: 4rem 2rem; /* 给section本身加上左右内边距，以防小屏幕贴边 */
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 .main-content .section:first-child { border-top: none; }
 
 .section-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #e0e0e0; margin-bottom: 2rem; text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); }
-.section-text { font-size: 1.1rem; line-height: 1.8; color: #d0d0d0; max-width: 800px; margin: 0 auto 2rem auto; text-align: left; }
+.section-text { font-size: 1.1rem; line-height: 1.8; color: #d0d0d0; max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 2rem; text-align: left; }
 
 /* --- Method 部分特定样式 --- */
 .method-image { max-width: 100%; height: auto; border-radius: 12px; margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); }
