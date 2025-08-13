@@ -66,14 +66,14 @@ html, body {
 }
 
 /* --- 作者和机构 --- */
-.author-section { margin-bottom: 1.5rem; }
+.author-section { margin-bottom: 2rem; }
 .authors .author-line { display: flex; justify-content: center; gap: 1.5rem 2.5rem; flex-wrap: wrap; margin: 0.5rem 0; }
 .authors span, .affiliations p { text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 1); }
 .authors span { font-size: 1.1rem; font-weight: 700; white-space: nowrap; }
-.affiliations { margin-top: 1.5rem; font-size: 1rem; color: #e0e0e0; }
+.affiliations { margin-top: 1.5rem; font-size: 1.2rem; color: #e0e0e0; }
 
 /* --- 备注信息样式 --- */
-.notes-section { font-size: 0.8rem; color: #b0b0b0; margin-bottom: 2.5rem; padding: 0 1rem; }
+.notes-section { font-size: 1rem; color: #b0b0b0; margin-bottom: 2.5rem; padding: 0 1rem; }
 .notes-section p { margin: 0; text-shadow: 0 0 8px rgba(0, 0, 0, 1); }
 
 /* --- 按钮样式 --- */
