@@ -3,9 +3,16 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Source Serif Pro', serif;
-    background-color: #121220; /* 默认背景色 */
+    background-color: #121220; /* 作为背景图加载失败时的备用色 */
     color: #ffffff;
     scroll-behavior: smooth;
+
+    /* 关键：将全局背景设置在这里，并固定 */
+    background-image: url('./assets/background_final_v3.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
 
 /* ====================================================== */
@@ -20,14 +27,8 @@ html, body {
     padding: 2rem 2rem 5rem 2rem; 
     box-sizing: border-box;
     position: relative; 
-    background-image: 
-        linear-gradient(to top, rgba(10, 10, 20, 1) 20%, rgba(10, 10, 20, 0.1) 60%),
-        url('./assets/background_final_v3.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    /* 核心属性：将背景图固定在视窗上，不随页面滚动 */
-    background-attachment: fixed; 
+    /* 只保留渐变蒙版，用于增强文字可读性，背景图由body提供 */
+    background: linear-gradient(to top, rgba(10, 10, 20, 0.95) 20%, rgba(10, 10, 20, 0) 70%);
 }
 
 /* --- 英雄区域内的内容包装器 --- */
@@ -77,13 +78,12 @@ html, body {
 /* --- 主内容滚动区域样式 --- */
 /* ====================================================== */
 .main-content {
-    /* 核心改动：从不透明的黑色改为半透明的深色 */
-    background-color: rgba(18, 18, 32, 0.85); 
+    /* 核心改动 1: 设置为完全透明 */
+    background-color: transparent; 
     position: relative;
     z-index: 5;
     padding: 0; 
     box-sizing: border-box;
-    backdrop-filter: blur(5px); /* 可选：增加一点毛玻璃效果，让背景更柔和 */
 }
 
 /* --- 通用 Section 样式 --- */
@@ -105,13 +105,47 @@ html, body {
     text-align: center;
 }
 
-/* --- 其余样式保持不变 --- */
 .section-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #e0e0e0; margin-bottom: 2rem; text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); }
-.section-text { font-size: 1.1rem; line-height: 1.8; color: #d0d0d0; max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 2rem; text-align: left; }
+
+/* 核心改动 2: 为文本段落添加卡片背景，使其可读 */
+.section-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d0d0d0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    text-align: left;
+    
+    background-color: rgba(18, 18, 32, 0.85); /* 半透明背景 */
+    padding: 2rem; /* 增加内边距 */
+    border-radius: 12px; /* 圆角 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* 可选：增加毛玻璃效果 */
+}
+
+/* --- Method 部分特定样式 --- */
 .method-image { max-width: 100%; height: auto; border-radius: 12px; margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* --- Gallery 部分样式 --- */
 .subsection-title { font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; color: #c5c5c5; margin-top: 3rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(170, 70, 255, 0.5); display: inline-block; padding-bottom: 0.5rem; }
 .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
-.comparison-pair { flex: 1 1 400px; max-width: 450px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+
+/* 核心改动 3: 统一画廊卡片的背景 */
+.comparison-pair {
+    flex: 1 1 400px;
+    max-width: 450px;
+    background: rgba(18, 18, 32, 0.85); /* 和文本卡片统一的半透明背景 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px); /* 可选：增加毛玻璃效果 */
+}
 .comparison-pair:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4); }
 .comparison-content { display: flex; gap: 4px; }
 .comparison-item { flex: 1; position: relative; overflow: hidden; }
