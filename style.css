@@ -17,7 +17,7 @@ html, body {
     justify-content: center;
     min-height: 100vh;
     /* 核心改动：将底部内边距从 6rem 增加到 8rem */
-    padding: 2rem 2rem 12rem 2rem; 
+    padding: 2rem 2rem 2rem 2rem; 
     box-sizing: border-box;
     position: relative; 
 
