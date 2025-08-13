@@ -88,7 +88,7 @@
                 <p class="section-text">
                     Our method, S²-Guidance, operates by injecting noise into intermediate feature maps of the diffusion model's U-Net and then using the model's own denoising capabilities to predict a "cleaner" version of those features. The difference between the original and the cleaner features serves as a guidance signal, steering the overall generation process towards more refined results. The diagram below illustrates the core mechanism.
                 </p>
-                <img src="assets/method_overview.jpg" alt="Method Overview Diagram" class="method-image">
+                <img src="assets/method.jpg" alt="Method Overview Diagram" class="method-image">
             </div>
         </div>
 
@@ -99,22 +99,24 @@
 
                 <!-- 图片展示子区域 -->
                 <h3 class="subsection-title">Text to Image Generation</h3>
-                <div class="gallery-grid">
-                    <!-- ======================================= -->
-                    <!-- KEY CHANGE IS HERE: Changed class and caption -->
-                    <!-- ======================================= -->
-                    <div class="full-width-item">
-                        <img src="assets/t2i.jpg" alt="Text to Image Generation Results">
-                        <p class="caption">Comparison of S²-Guidance with other methods like CFG, APG, and CFG++.</p>
-                    </div>
+                
+                <!-- ======================================================= -->
+                <!-- 关键改动：移除了外层的 .gallery-grid div -->
+                <!-- 这个 .full-width-item 现在是 .content-wrapper 的直接子元素 -->
+                <!-- ======================================================= -->
+                <div class="full-width-item">
+                    <img src="assets/t2i.jpg" alt="Text to Image Generation Results">
+                    <p class="caption">Comparison of S²-Guidance with other methods like CFG, APG, and CFG++.</p>
                 </div>
 
                 <!-- 视频展示子区域 -->
                 <h3 class="subsection-title">Text to Video Generation</h3>
+                
+                <!-- .gallery-grid 保留在这里，因为它正确地包裹了多个视频项 -->
                 <div class="gallery-grid">
                     <div class="gallery-item">
                         <video autoplay loop muted playsinline width="100%">
-                            <source src="assets/video_result_1.mp4" type="video/mp4">
+                            <source src="assets/cfg.mp4" type="video/mp4">
                         </video>
                         <p class="caption">Dynamic video generation showcasing temporal consistency.</p>
                     </div>
