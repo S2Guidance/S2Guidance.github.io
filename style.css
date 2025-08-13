@@ -23,7 +23,7 @@ html, body {
     align-items: center;
     min-height: 100vh;
     /* 关键改动 1: 增加底部 padding，将整体内容上移，实现视觉上的“下移” */
-    padding: 2rem 2rem 4rem 2rem; 
+    padding: 2rem 2rem 8rem 2rem; 
     box-sizing: border-box;
     position: relative; 
 }
@@ -69,7 +69,7 @@ html, body {
 
 /* 关键改动 3: 增大作者字体 */
 .authors span { 
-    font-size: 1.2rem; /* 从 1.1rem 增大 */
+    font-size: 3rem; /* 从 1.1rem 增大 */
     font-weight: 700; 
     white-space: nowrap; 
 }
