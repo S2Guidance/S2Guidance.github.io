@@ -6,7 +6,6 @@ html, body {
     background-color: #121220;
     color: #ffffff;
     scroll-behavior: smooth;
-    /* 背景图固定在body上，作为最底层 */
     background-image: url('./assets/background_final_v3.jpg');
     background-size: cover;
     background-position: center center;
@@ -23,31 +22,25 @@ html, body {
     justify-content: flex-end;
     align-items: center;
     min-height: 100vh;
-    padding: 2rem; /* 整体留出边距即可 */
+    padding: 2rem;
     box-sizing: border-box;
     position: relative; 
-    /* 移除所有背景和蒙版，让它完全透明 */
 }
 
-/* --- 英雄区域内的内容包装器 --- */
 .hero-section .content-wrapper {
     position: relative; 
-    width: 60%; /* 您可以保留这个宽度，或者改为100%以获得全宽的浮动文字 */
+    width: 60%;
     max-width: 950px; 
     min-width: 320px;
     text-align: center;
-    
-    /* 关键改动：移除所有背景、边框和效果，使其完全透明 */
     background: transparent;
     border: none;
-    padding: 2.5rem; /* 这里的padding现在只负责创造内边距，没有视觉效果 */
+    padding: 2.5rem;
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }
 
-
-/* --- 论文标题 --- */
 .paper-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -59,24 +52,18 @@ html, body {
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    text-shadow: 
-        0 0 5px rgba(200, 100, 255, 0.7),
-        0 0 15px rgba(100, 180, 255, 0.5),
-        0 0 30px rgba(18, 18, 32, 1);
+    text-shadow: 0 0 5px rgba(200, 100, 255, 0.7), 0 0 15px rgba(100, 180, 255, 0.5), 0 0 30px rgba(18, 18, 32, 1);
 }
 
-/* --- 作者和机构 --- */
 .author-section { margin-bottom: 2rem; }
 .authors .author-line { display: flex; justify-content: center; gap: 1.5rem 2.5rem; flex-wrap: wrap; margin: 0.5rem 0; }
 .authors span, .affiliations p { text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 1); }
 .authors span { font-size: 1.5rem; font-weight: 700; white-space: nowrap; }
 .affiliations { margin-top: 1.2rem; font-size: 1.2rem; color: #e0e0e0; }
 
-/* --- 备注信息样式 --- */
 .notes-section { font-size: 1rem; color: #b0b0b0; margin-bottom: 0.5rem; padding: 0 1rem; }
 .notes-section p { margin: 0; text-shadow: 0 0 8px rgba(0, 0, 0, 1); }
 
-/* --- 按钮样式 --- */
 .button-container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
 .action-button { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 50px; background: rgba(170, 70, 255, 0.5); border: 2px solid rgba(220, 180, 255, 0.7); transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
 .action-button:hover { background: rgba(200, 100, 255, 0.8); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(170, 70, 255, 0.6); }
@@ -92,7 +79,6 @@ html, body {
     box-sizing: border-box;
 }
 
-/* --- 通用 Section 样式 --- */
 .section {
     width: 100%;
     padding: 4rem 2rem;
@@ -103,7 +89,6 @@ html, body {
 }
 .main-content .section:first-child { border-top: none; }
 
-/* --- 后续内容的 Content Wrapper --- */
 .main-content .content-wrapper {
     width: 100%;
     max-width: 950px;
@@ -150,20 +135,51 @@ html, body {
 }
 .comparison-pair:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4); }
 .comparison-content { display: flex; gap: 4px; }
-.comparison-item { flex: 1; position: relative; overflow: hidden; }
+.comparison-item { flex: 1; position: relative; overflow: hidden; cursor: pointer; } /* 添加 cursor: pointer */
 .comparison-item img, .comparison-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .comparison-label { position: absolute; top: 8px; left: 8px; background-color: rgba(18, 18, 32, 0.8); color: #e0e0e0; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 6px; z-index: 10; }
 .comparison-pair .caption { padding: 1rem 1.2rem; font-size: 0.9rem; color: #b0b0b0; margin: 0; background: rgba(0, 0, 0, 0.2); min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; flex-grow: 1; }
 .label-ours { background-color: rgba(170, 70, 255, 0.7); }
 
-/* ====================================================== */
-/* --- 为视频画廊设置单列布局 (最终修复) --- */
-/* ====================================================== */
-
 .gallery-grid-videos .comparison-pair {
-    /* 关键改动：强制将卡片的基础宽度设为100%，确保它总是换行 */
     flex-basis: 100%;
-    
-    /* 同时设置一个合理的最大宽度，防止在超大屏幕上过宽 */
     max-width: 800px; 
+}
+
+/* ====================================================== */
+/* --- 新增：自定义视频播放按钮样式 --- */
+/* ====================================================== */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 1;
+}
+
+.comparison-item:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-button svg {
+    width: 32px;
+    height: 32px;
+    fill: #ffffff;
+    /* 播放图标不是完美居中的，需要微调 */
+    transform: translateX(2px); 
+}
+
+.play-button.hidden {
+    opacity: 0;
+    pointer-events: none; /* 隐藏时不可点击 */
 }
