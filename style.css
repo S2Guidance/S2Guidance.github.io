@@ -3,14 +3,9 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Source Serif Pro', serif;
-    background-color: #121220;
+    background-color: #121220; /* 默认背景色 */
     color: #ffffff;
     scroll-behavior: smooth;
-    background-image: url('./assets/background_final_v3.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
 }
 
 /* ====================================================== */
@@ -22,27 +17,26 @@ html, body {
     justify-content: flex-end;
     align-items: center;
     min-height: 100vh;
-    /* 关键改动 1: 增加底部 padding，将整体内容上移，实现视觉上的“下移” */
-    padding: 2rem 2rem 2rem 2rem; 
+    padding: 2rem 2rem 5rem 2rem; 
     box-sizing: border-box;
     position: relative; 
+    background-image: 
+        linear-gradient(to top, rgba(10, 10, 20, 1) 20%, rgba(10, 10, 20, 0.1) 60%),
+        url('./assets/background_final_v3.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
 
 /* --- 英雄区域内的内容包装器 --- */
 .hero-section .content-wrapper {
-    position: relative; 
-    width: 60%;
-    max-width: 950px; 
-    min-width: 320px;
+    position: relative;
+    width: 100%;
+    max-width: 950px;
+    padding: 1rem;
     text-align: center;
-    background: transparent;
-    border: none;
-    padding: 2.5rem;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
 }
-
 
 /* --- 论文标题 --- */
 .paper-title {
@@ -63,32 +57,14 @@ html, body {
 }
 
 /* --- 作者和机构 --- */
-.author-section { margin-bottom: 1.5rem; } /* 将其与下方备注的间距减小 */
+.author-section { margin-bottom: 1.5rem; }
 .authors .author-line { display: flex; justify-content: center; gap: 1.5rem 2.5rem; flex-wrap: wrap; margin: 0.5rem 0; }
 .authors span, .affiliations p { text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 1); }
-
-/* 关键改动 3: 增大作者字体 */
-.authors span { 
-    font-size: 2rem; /* 从 1.1rem 增大 */
-    font-weight: 700; 
-    white-space: nowrap; 
-}
-
+.authors span { font-size: 1.1rem; font-weight: 700; white-space: nowrap; }
 .affiliations { margin-top: 1.5rem; font-size: 1rem; color: #e0e0e0; }
 
 /* --- 备注信息样式 --- */
-/* 关键改动 2: 调整备注间距，让它们看起来像一个整体 */
-.notes-section {
-    font-size: 0.9rem; /* 稍微缩小一点，与作者形成对比 */
-    color: #b0b0b0;
-    margin-bottom: 0.3rem; /* 大大减小底部间距，让它们贴近 */
-    padding: 0 1rem;
-}
-/* 单独为最后一个备注信息设置较大的底部间距，以推开按钮 */
-.notes-section:last-of-type {
-    margin-bottom: 2rem;
-}
-
+.notes-section { font-size: 0.8rem; color: #b0b0b0; margin-bottom: 2.5rem; padding: 0 1rem; }
 .notes-section p { margin: 0; text-shadow: 0 0 8px rgba(0, 0, 0, 1); }
 
 /* --- 按钮样式 --- */
@@ -100,60 +76,57 @@ html, body {
 /* --- 主内容滚动区域样式 --- */
 /* ====================================================== */
 .main-content {
-    background-color: transparent; 
+    background-color: #121220; 
     position: relative;
     z-index: 5;
     padding: 0; 
     box-sizing: border-box;
 }
 
-/* --- 通用 Section 样式 --- */
+/* --- 通用 Section 样式 (核心改动在这里) --- */
 .section {
     width: 100%;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem; /* 给section本身加上左右内边距，以防小屏幕贴边 */
     box-sizing: border-box;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* 核心改动：将 section 设为 flex 容器来居中它的子元素 */
     display: flex;
     justify-content: center;
 }
 .main-content .section:first-child { border-top: none; }
 
+
 /* --- 后续内容的 Content Wrapper --- */
 .main-content .content-wrapper {
     width: 100%;
     max-width: 950px;
-    padding: 0 1rem;
+    /* margin-left/right: auto 不再需要，因为父级 .section 已经处理了居中 */
+    padding: 0 1rem; /* 调整内边距，因为外层 section 已有垂直内边距 */
     text-align: center;
 }
 
 .section-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #e0e0e0; margin-bottom: 2rem; text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); }
+.section-text { font-size: 1.1rem; line-height: 1.8; color: #d0d0d0; max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 2rem; text-align: left; }
 
-.section-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #d0d0d0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    text-align: left;
-    background-color: rgba(18, 18, 32, 0.85);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-}
-
+/* --- Method 部分特定样式 --- */
 .method-image { max-width: 100%; height: auto; border-radius: 12px; margin-top: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); }
 
 /* --- Gallery 部分样式 --- */
 .subsection-title { font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; color: #c5c5c5; margin-top: 3rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(170, 70, 255, 0.5); display: inline-block; padding-bottom: 0.5rem; }
 .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+.gallery-item { flex: 1 1 400px; max-width: 450px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+.gallery-item:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4); }
+.gallery-item img, .gallery-item video { width: 100%; height: auto; display: block; }
+.gallery-item .caption { padding: 1rem 1.2rem; font-size: 0.9rem; color: #b0b0b0; margin: 0; background: rgba(0, 0, 0, 0.2); min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; flex-grow: 1; }
 
-.comparison-pair {
-    flex: 1 1 400px;
-    max-width: 450px;
-    background: rgba(18, 18, 32, 0.85);
+/* ====================================================== */
+/* --- 全宽展示项的最终样式 --- */
+/* ====================================================== */
+
+.full-width-item {
+    /* 继承基础卡片样式 */
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     overflow: hidden;
@@ -161,12 +134,142 @@ html, body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(5px);
+
+    /* 核心：现在它会自动撑满父容器(.content-wrapper)的宽度 */
+    width: 100%; 
+    
+    /* 移除之前的 max-width，因为父容器会限制它 */
+    /* max-width: 900px;  <-- This is no longer needed */
+
+    /* 为它和下方的标题之间增加一些间距 */
+    margin-bottom: 2rem;
 }
-.comparison-pair:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4); }
-.comparison-content { display: flex; gap: 4px; }
-.comparison-item { flex: 1; position: relative; overflow: hidden; }
-.comparison-item img, .comparison-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.comparison-label { position: absolute; top: 8px; left: 8px; background-color: rgba(18, 18, 32, 0.8); color: #e0e0e0; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 6px; z-index: 10; }
-.comparison-pair .caption { padding: 1rem 1.2rem; font-size: 0.9rem; color: #b0b0b0; margin: 0; background: rgba(0, 0, 0, 0.2); min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; flex-grow: 1; }
-.label-ours { background-color: rgba(170, 70, 255, 0.7); }
+
+.full-width-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4);
+}
+
+/* 我们不再需要为 .full-width-item 重复定义 img 和 caption 样式，
+   因为它现在可以直接被 .gallery-item 的样式覆盖，或者我们可以明确地组合它们。
+   为了清晰，我们还是保留它们。*/
+.full-width-item img,
+.full-width-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.full-width-item .caption {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+}
+
+
+/* ====================================================== */
+/* --- Gallery 部分样式 (新的对比布局) --- */
+/* ====================================================== */
+.subsection-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c5c5c5;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(170, 70, 255, 0.5);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* "对比组" 的样式，这是新的主卡片 */
+.comparison-pair {
+    flex: 1 1 400px; /* 和原来一样，基础宽度400px，可伸缩 */
+    max-width: 450px; /* 限制最大宽度，保持每行两个 */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* 让标题和图片内容垂直排列 */
+}
+
+.comparison-pair:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4);
+}
+
+/* 用来并排摆放两个对比项的容器 */
+.comparison-content {
+    display: flex;
+    gap: 4px; /* 两个对比项之间的细微间隙 */
+}
+
+/* "对比项" 的样式，即内部的小容器 */
+.comparison-item {
+    flex: 1; /* 让两个对比项平分空间 */
+    position: relative; /* 为标签的绝对定位提供参考 */
+    overflow: hidden; /* 确保图片/视频不会溢出 */
+}
+
+.comparison-item img,
+.comparison-item video {
+    width: 100%;
+    height: 100%; /* 确保视频也能填满高度 */
+    object-fit: cover; /* 保证图片/视频填满容器，不变形 */
+    display: block;
+}
+
+/* "Baseline" / "Ours" 标签的样式 */
+.comparison-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(18, 18, 32, 0.8);
+    color: #e0e0e0;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 6px;
+    z-index: 10;
+}
+
+/* 通用标题栏样式，适用于所有卡片 */
+.comparison-pair .caption {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1; /* 确保它能填满剩余空间 */
+}
+
+/* ====================================================== */
+/* --- 新增：为 "Ours" 标签设置专属颜色 --- */
+/* ====================================================== */
+
+.label-ours {
+    background-color: rgba(170, 70, 255, 0.7); /* 一个匹配主题的浅紫色 */
+}
