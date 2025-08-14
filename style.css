@@ -23,7 +23,7 @@ html, body {
     align-items: center;
     min-height: 100vh;
     /* 关键改动 1: 增加底部 padding，将整体内容上移，实现视觉上的“下移” */
-    padding: 2rem 2rem 8rem 2rem; 
+    padding: 2rem 2rem 2rem 2rem; 
     box-sizing: border-box;
     position: relative; 
 }
@@ -69,7 +69,7 @@ html, body {
 
 /* 关键改动 3: 增大作者字体 */
 .authors span { 
-    font-size: 3rem; /* 从 1.1rem 增大 */
+    font-size: 2rem; /* 从 1.1rem 增大 */
     font-weight: 700; 
     white-space: nowrap; 
 }
@@ -81,12 +81,12 @@ html, body {
 .notes-section {
     font-size: 0.9rem; /* 稍微缩小一点，与作者形成对比 */
     color: #b0b0b0;
-    margin-bottom: 0.5rem; /* 大大减小底部间距，让它们贴近 */
+    margin-bottom: 0.3rem; /* 大大减小底部间距，让它们贴近 */
     padding: 0 1rem;
 }
 /* 单独为最后一个备注信息设置较大的底部间距，以推开按钮 */
 .notes-section:last-of-type {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .notes-section p { margin: 0; text-shadow: 0 0 8px rgba(0, 0, 0, 1); }
