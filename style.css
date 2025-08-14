@@ -155,3 +155,12 @@ html, body {
 .comparison-label { position: absolute; top: 8px; left: 8px; background-color: rgba(18, 18, 32, 0.8); color: #e0e0e0; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 6px; z-index: 10; }
 .comparison-pair .caption { padding: 1rem 1.2rem; font-size: 0.9rem; color: #b0b0b0; margin: 0; background: rgba(0, 0, 0, 0.2); min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; flex-grow: 1; }
 .label-ours { background-color: rgba(170, 70, 255, 0.7); }
+
+/* ====================================================== */
+/* --- 新增：为视频画廊设置单列布局 --- */
+/* ====================================================== */
+
+.gallery-grid-videos .comparison-pair {
+    /* 覆盖原来的 max-width，让卡片可以变得更宽 */
+    max-width: 800px; 
+}
