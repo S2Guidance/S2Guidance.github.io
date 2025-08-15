@@ -280,27 +280,7 @@
         </div>
     </main>
 
-    <!-- ====================================================== -->
-    <!-- 新增: 视频交互播放脚本 -->
-    <!-- ====================================================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const videoItems = document.querySelectorAll('.comparison-item');
-
-            videoItems.forEach(item => {
-                const video = item.querySelector('video');
-                if (video) {
-                    item.addEventListener('mouseenter', () => {
-                        video.play();
-                    });
-
-                    item.addEventListener('mouseleave', () => {
-                        video.pause();
-                    });
-                }
-            });
-        });
-    </script>
+ 
 
 </body>
 </html>
