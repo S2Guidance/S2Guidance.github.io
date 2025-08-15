@@ -11,26 +11,62 @@
 </head>
 <body>
 
+    <!-- ====================================================== -->
+    <!-- 1. 全屏英雄区域 (新结构) -->
+    <!-- ====================================================== -->
     <header class="hero-section">
+        <!-- 背景大文字 -->
+        
+
         <div class="content-wrapper">
+            <!-- 标题 -->
             <h2 class="paper-title">
                 Stochastic Self-Guidance for Training-Free Enhancement of Diffusion Models
             </h2>
+
+            <!-- 作者和机构信息 -->
             <div class="author-section">
                 <div class="authors">
-                    <p class="author-line"><span>Chubin Chen<sup>1,2,*</sup></span><span>Jiashu Zhu<sup>2</sup></span><span>Xiaokun Feng<sup>2,3</sup></span><span>Nisha Huang<sup>1</sup></span></p>
-                    <p class="author-line"><span>Meiqi Wu<sup>2,3</sup></span><span>Fangyuan Mao<sup>2</sup></span><span>Jiahong Wu<sup>2,‡</sup></span><span>Xiangxiang Chu<sup>2</sup></span><span>Xiu Li<sup>1,†</sup></span></p>
+                    <p class="author-line">
+                        <span>Chubin Chen<sup>1,2,*</sup></span>
+                        <span>Jiashu Zhu<sup>2</sup></span>
+                        <span>Xiaokun Feng<sup>2,3</sup></span>
+                        <span>Nisha Huang<sup>1</sup></span>
+                    </p>
+                    <p class="author-line">
+                        <span>Meiqi Wu<sup>2,3</sup></span>
+                        <span>Fangyuan Mao<sup>2</sup></span>
+                        <span>Jiahong Wu<sup>2,‡</sup></span>
+                        <span>Xiangxiang Chu<sup>2</sup></span>
+                        <span>Xiu Li<sup>1,†</sup></span>
+                    </p>
                 </div>
                 <div class="affiliations">
-                    <p><sup>1</sup>Tsinghua University &nbsp;&nbsp;&nbsp; <sup>2</sup>AMAP, Alibaba Group &nbsp;&nbsp;&nbsp; <sup>3</sup>CASIA</p>
+                    <p>
+                        <sup>1</sup>Tsinghua University &nbsp;&nbsp;&nbsp;
+                        <sup>2</sup>AMAP, Alibaba Group &nbsp;&nbsp;&nbsp;
+                        <sup>3</sup>CASIA
+                    </p>
                 </div>
             </div>
+
+            <!-- 备注信息 -->
             <div class="notes-section">
-                <p><sup>*</sup>Work done during the internship at AMAP, Alibaba Group. &nbsp;&nbsp; <sup>†</sup>Corresponding author. &nbsp;&nbsp; <sup>‡</sup>Project lead.</p>
+                <p>
+                    <sup>*</sup>Work done during the internship at AMAP, Alibaba Group. &nbsp;&nbsp;
+                    <sup>†</sup>Corresponding author. &nbsp;&nbsp;
+                    <sup>‡</sup>Project lead.
+                </p>
             </div>
+
+            <!-- 备注信息 -->
             <div class="notes-section">
-                <p>Our team is hiring full-time employees and interns for video generation roles, contact us: hongxi.wjh@alibaba-inc.com.</p>
+                <p>
+                    Our team is hiring full-time employees and interns for video generation roles.
+                </p>
             </div>
+            
+            <!-- 按钮 -->
             <nav class="button-container">
                 <a href="https://arxiv.org/abs/2312.01323" class="action-button">📄 Paper</a>
                 <a href="https://github.com/chubin-chen/S2-Guidance" class="action-button">💻 GitHub</a>
@@ -38,7 +74,11 @@
         </div>
     </header>
 
+    <!-- ====================================================== -->
+    <!-- 2. 主内容滚动区域 (新结构) -->
+    <!-- ====================================================== -->
     <main class="main-content">
+        <!-- 摘要 (Abstract) 区域 -->
         <div class="section" id="abstract">
             <div class="content-wrapper">
                 <h2 class="section-title">Abstract</h2>
@@ -48,50 +88,143 @@
             </div>
         </div>
 
+
+        <!-- 方法 (Method) 区域 -->
         <div class="section" id="method">
             <div class="content-wrapper">
                 <h2 class="section-title">Method</h2>
                 <p class="section-text">
-                    Our method, S²-Guidance, operates by injecting noise into intermediate feature maps of the diffusion model's U-Net and then using the model's own denoising capabilities to predict a "cleaner" version of those features. The difference between the original and the cleaner features serves as a guidance signal, steering the overall generation process towards more refined results. The diagram below illustrates the core mechanism.
+                    <strong>An illustration of our guidance mechanism on the generation quality manifold.</strong> 
+                    The current state of generation (M<sub>t</sub>, orange wireframe) is guided towards the next state (M<sub>t-1</sub>). Original CFG provides a strong but suboptimal direction (gray arrow), failing to precisely target the high-quality region (yellow peak). <strong>Ours</strong> refines this by computing a self-corrective prediction from a stochastically block-dropping strategy (<em>Pred w/ Stoc. drop</em>, blue arrow).
+                    The resulting <strong>Ours</strong> vector (purple arrow) steers the update towards the optimal region of the generation manifold, resulting in higher-fidelity outputs.
                 </p>
                 <img src="assets/method_v2.jpg" alt="Method Overview Diagram" class="method-image">
             </div>
         </div>
 
+
+        <!-- 画廊 (Gallery) 区域 -->
         <div class="section" id="gallery">
             <div class="content-wrapper">
                 <h2 class="section-title">Gallery</h2>
 
+                <!-- ======================================================= -->
+                <!-- Text to Image Generation - 保持不变 -->
+                <!-- ======================================================= -->
                 <h3 class="subsection-title">Text to Image Generation</h3>
                 <div class="gallery-grid">
-                    <!-- Image sections remain unchanged -->
-                    <div class="comparison-pair"><div class="comparison-content"><div class="comparison-item"><span class="comparison-label">CFG</span><img src="assets/baseline1.jpg" alt="Baseline result for prompt 1"></div><div class="comparison-item"><span class="comparison-label label-ours">Ours</span><img src="assets/ours1.jpg" alt="Our result for prompt 1"></div></div><p class="caption">Prompt: "The bold dramatic strokes of the painter's brush created a stunning abstract masterpiece a work of emotional depth and intensity."</p></div>
-                    <div class="comparison-pair"><div class="comparison-content"><div class="comparison-item"><span class="comparison-label">CFG</span><img src="assets/baseline2.jpg" alt="Baseline result for prompt 2"></div><div class="comparison-item"><span class="comparison-label label-ours">Ours</span><img src="assets/ours2.jpg" alt="Our result for prompt 2"></div></div><p class="caption">Prompt: "A floating castle above the clouds, with 'S² Guidance Is All You Need' swirling in the mist."</p></div>
-                    <div class="comparison-pair"><div class="comparison-content"><div class="comparison-item"><span class="comparison-label">CFG</span><img src="assets/baseline3.jpg" alt="Baseline result for prompt 2"></div><div class="comparison-item"><span class="comparison-label label-ours">Ours</span><img src="assets/ours3.jpg" alt="Our result for prompt 2"></div></div><p class="caption">Prompt: "A woman is holding a bouquet of balloons and celebrating a birthday."</p></div>
-                    <div class="comparison-pair"><div class="comparison-content"><div class="comparison-item"><span class="comparison-label">CFG</span><img src="assets/baseline4.jpg" alt="Baseline result for prompt 2"></div><div class="comparison-item"><span class="comparison-label label-ours">Ours</span><img src="assets/ours4.jpg" alt="Our result for prompt 2"></div></div><p class="caption">Prompt: "A red book and an ivory sheep. "</p></div>
-                    <div class="comparison-pair"><div class="comparison-content"><div class="comparison-item"><span class="comparison-label">CFG</span><img src="assets/baseline5.jpg" alt="Baseline result for prompt 2"></div><div class="comparison-item"><span class="comparison-label label-ours">Ours</span><img src="assets/ours5.jpg" alt="Our result for prompt 2"></div></div><p class="caption">Prompt: "A cat sitting besides a rocket on a planet with a lot of cactuses."</p></div>
-                    <div class="comparison-pair"><div class="comparison-content"><div class="comparison-item"><span class="comparison-label">CFG</span><img src="assets/baseline6.jpg" alt="Baseline result for prompt 2"></div><div class="comparison-item"><span class="comparison-label label-ours">Ours</span><img src="assets/ours6.jpg" alt="Our result for prompt 2"></div></div><p class="caption">Prompt: "A woman sitting under an umbrella in the middle of a restaurant."</p></div>
+                    
+                    <!-- 对比组 1 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline1.jpg" alt="Baseline result for prompt 1">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours1.jpg" alt="Our result for prompt 1">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "The bold dramatic strokes of the painter's brush created a stunning abstract masterpiece a work of emotional depth and intensity."</p>
+                    </div>
+
+                    <!-- 对比组 2 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline2.jpg" alt="Baseline result for prompt 2">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours2.jpg" alt="Our result for prompt 2">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A floating castle above the clouds, with 'S² Guidance Is All You Need' swirling in the mist."</p>
+                    </div>
+
+                    <!-- 对比组 3 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline3.jpg" alt="Baseline result for prompt 2">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours3.jpg" alt="Our result for prompt 2">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A woman is holding a bouquet of balloons and celebrating a birthday."</p>
+                    </div>
+
+                    <!-- 对比组 4 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline4.jpg" alt="Baseline result for prompt 2">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours4.jpg" alt="Our result for prompt 2">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A red book and an ivory sheep. "</p>
+                    </div>                
+
+                    <!-- 对比组 5 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline5.jpg" alt="Baseline result for prompt 2">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours5.jpg" alt="Our result for prompt 2">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A cat sitting besides a rocket on a planet with a lot of cactuses."</p>
+                    </div>  
+                    
+                     <!-- 对比组 6 -->
+                     <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline6.jpg" alt="Baseline result for prompt 2">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours6.jpg" alt="Our result for prompt 2">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A woman sitting under an umbrella in the middle of a restaurant."</p>
+                    </div>                   
                 </div>
 
+                <!-- ======================================================= -->
+                <!-- Text to Video Generation - 布局已修改 -->
+                <!-- ======================================================= -->
                 <h3 class="subsection-title">Text to Video Generation</h3>
+                <!-- 关键改动：添加了 'gallery-grid-videos' 类 -->
                 <div class="gallery-grid gallery-grid-videos">
+
                     <!-- 视频对比组 1 -->
                     <div class="comparison-pair">
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <!-- 关键改动：添加播放按钮，修改video标签 -->
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/baseline_video1_poster.jpg" width="100%"><source src="assets/baseline_video1.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video1.mp4" type="video/mp4"></video>
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <!-- 关键改动：添加播放按钮，修改video标签 -->
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/ours_video1_poster.jpg" width="100%"><source src="assets/ours_video1.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video1.mp4" type="video/mp4"></video>
                             </div>
                         </div>
-                        <p class="caption">Prompt: "A breathtaking close-up of a woman frozen in time..."</p>
+                        <p class="caption">Prompt: "A breathtaking close-up of a woman frozen in time as golden threads of light weave around her face, creating dynamic flowing patterns of energy amidst glowing particles."</p>
                     </div>
 
                     <!-- 视频对比组 2 -->
@@ -99,30 +232,28 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/baseline_video2_poster.jpg" width="100%"><source src="assets/baseline_video2.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video2.mp4" type="video/mp4"></video>
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/ours_video2_poster.jpg" width="100%"><source src="assets/ours_video2.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video2.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "An astronaut flying in space, zoom out."</p>
                     </div>
 
+
+
                     <!-- 视频对比组 3 -->
                     <div class="comparison-pair">
                         <div class="comparison-content">
-                             <div class="comparison-item">
+                            <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/baseline_video3_poster.jpg" width="100%"><source src="assets/baseline_video3.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video3.mp4" type="video/mp4"></video>
                             </div>
-                             <div class="comparison-item">
+                            <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/ours_video3_poster.jpg" width="100%"><source src="assets/ours_video3.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video3.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "A car accelerating to gain speed."</p>
@@ -131,64 +262,23 @@
                     <!-- 视频对比组 4 -->
                     <div class="comparison-pair">
                         <div class="comparison-content">
-                             <div class="comparison-item">
+                            <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/baseline_video4_poster.jpg" width="100%"><source src="assets/baseline_video4.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video4.mp4" type="video/mp4"></video>
                             </div>
-                             <div class="comparison-item">
+                            <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg></div>
-                                <video preload="metadata" loading="lazy" poster="assets/ours_video4_poster.jpg" width="100%"><source src="assets/ours_video4.mp4" type="video/mp4"></video>
+                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video4.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "A parking meter and a truck."</p>
                     </div>
 
+
                 </div>
             </div>
         </div>
     </main>
-    
-    <!-- 关键改动：添加JavaScript脚本 -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 找到所有视频所在的容器
-            const videoContainers = document.querySelectorAll('.gallery-grid-videos .comparison-item');
-            
-            videoContainers.forEach(container => {
-                const video = container.querySelector('video');
-                const playButton = container.querySelector('.play-button');
-
-                if (video && playButton) {
-                    // 点击播放按钮
-                    playButton.addEventListener('click', (e) => {
-                        e.stopPropagation(); // 防止点击事件冒泡到父容器
-                        video.play();
-                    });
-
-                    // 点击视频本身（播放/暂停切换）
-                    video.addEventListener('click', () => {
-                        if (video.paused) {
-                            video.play();
-                        } else {
-                            video.pause();
-                        }
-                    });
-
-                    // 当视频开始播放时，隐藏播放按钮
-                    video.addEventListener('play', () => {
-                        playButton.classList.add('hidden');
-                    });
-
-                    // 当视频暂停时，显示播放按钮
-                    video.addEventListener('pause', () => {
-                        playButton.classList.remove('hidden');
-                    });
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
