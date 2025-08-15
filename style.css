@@ -146,40 +146,42 @@ html, body {
     max-width: 800px; 
 }
 
-/* ====================================================== */
-/* --- 新增：自定义视频播放按钮样式 --- */
-/* ====================================================== */
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    width: 60px;
-    height: 60px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    cursor: pointer;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    opacity: 1;
-}
+
 
 .comparison-item:hover .play-button {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-.play-button svg {
-    width: 32px;
-    height: 32px;
-    fill: #ffffff;
-    /* 播放图标不是完美居中的，需要微调 */
-    transform: translateX(2px); 
+/* ====================================================== */
+/* --- 新增：视频标准控件样式 (悬停显示) --- */
+/* ====================================================== */
+
+/* ====================================================== */
+/* --- 更新：视频标准控件样式 (悬停显示, 隐藏音量) --- */
+/* ====================================================== */
+
+/* 默认隐藏浏览器原生控件 */
+video::-webkit-media-controls {
+    display: none !important;
 }
 
-.play-button.hidden {
-    opacity: 0;
-    pointer-events: none; /* 隐藏时不可点击 */
+/* 当鼠标悬停在视频容器上时，显示控件 */
+.comparison-item:hover video::-webkit-media-controls {
+    display: block !important;
 }
+
+/* 针对控件面板进行美化（可选，但推荐） */
+video::-webkit-media-controls-panel {
+    background-color: rgba(18, 18, 32, 0.7); 
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 0 0 12px 12px;
+}
+
+/* --- 新增：永久隐藏音量相关控件 --- */
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-volume-slider {
+    display: none !important;
+}
+
+
