@@ -83,7 +83,7 @@
             <div class="content-wrapper">
                 <h2 class="section-title">Abstract</h2>
                 <p class="section-text">
-                    Classifier-free Guidance (CFG) is a widely used technique in modern diffusion models for enhancing sample quality and prompt adherence. However, through an empirical analysis on Gaussian mixture modeling with a closed-form solution, we observe a discrepancy between the suboptimal results produced by CFG and the ground truth. The model's excessive reliance on these suboptimal predictions often leads to semantic incoherence and low-quality outputs. To address this issue, we first empirically demonstrate that the model's suboptimal predictions can be effectively refined using sub-networks of the model itself. Building on this insight, we propose <strong>S<sup>2</sup>-Guidance</strong>, a novel method that leverages stochastic block-dropping during the forward process to construct sub-networks, effectively guiding the model away from potential low-quality predictions and toward high-quality outputs. Extensive qualitative and quantitative experiments on text-to-image and text-to-video generation tasks demonstrate that <strong>S<sup>2</sup>-Guidance</strong> delivers superior performance, consistently surpassing CFG and other advanced guidance strategies. Our code will be released.
+                    Classifier-Free Guidance (CFG) is a widely used technique in modern diffusion models for enhancing sample quality and prompt adherence. However, through an empirical analysis on Gaussian mixture modeling with a closed-form solution, we observe a discrepancy between the suboptimal results produced by CFG and the ground truth. The model's excessive reliance on these suboptimal predictions often leads to semantic incoherence and low-quality outputs. To address this issue, we first empirically demonstrate that the model's suboptimal predictions can be effectively refined using sub-networks of the model itself. Building on this insight, we propose <strong>S<sup>2</sup>-Guidance</strong>, a novel method that leverages stochastic block-dropping during the forward process to construct sub-networks, effectively guiding the model away from potential low-quality predictions and toward high-quality outputs. Extensive qualitative and quantitative experiments on text-to-image and text-to-video generation tasks demonstrate that <strong>S<sup>2</sup>-Guidance</strong> delivers superior performance, consistently surpassing CFG and other advanced guidance strategies. Our code will be released.
                 </p>
             </div>
         </div>
@@ -98,7 +98,7 @@
                     The current state of generation (M<sub>t</sub>, orange wireframe) is guided towards the next state (M<sub>t-1</sub>). Original CFG provides a strong but suboptimal direction (gray arrow), failing to precisely target the high-quality region (yellow peak). <strong>Ours</strong> refines this by computing a self-corrective prediction from a stochastically block-dropping strategy (<em>Pred w/ Stoc. drop</em>, blue arrow).
                     The resulting <strong>Ours</strong> vector (purple arrow) steers the update towards the optimal region of the generation manifold, resulting in higher-fidelity outputs.
                 </p>
-                <img src="assets/method_v2.jpg" alt="Method Overview Diagram" class="method-image">
+                <img src="assets/method_v2.jpg" alt="Method Overview Diagram" class="method-image" loading="lazy">
             </div>
         </div>
 
@@ -119,11 +119,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <img src="assets/baseline1.jpg" alt="Baseline result for prompt 1">
+                                <img src="assets/baseline1.jpg" alt="Baseline result for prompt 1" loading="lazy">
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <img src="assets/ours1.jpg" alt="Our result for prompt 1">
+                                <img src="assets/ours1.jpg" alt="Our result for prompt 1" loading="lazy">
                             </div>
                         </div>
                         <p class="caption">Prompt: "The bold dramatic strokes of the painter's brush created a stunning abstract masterpiece a work of emotional depth and intensity."</p>
@@ -134,11 +134,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <img src="assets/baseline2.jpg" alt="Baseline result for prompt 2">
+                                <img src="assets/baseline2.jpg" alt="Baseline result for prompt 2" loading="lazy">
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <img src="assets/ours2.jpg" alt="Our result for prompt 2">
+                                <img src="assets/ours2.jpg" alt="Our result for prompt 2" loading="lazy">
                             </div>
                         </div>
                         <p class="caption">Prompt: "A floating castle above the clouds, with 'S² Guidance Is All You Need' swirling in the mist."</p>
@@ -149,11 +149,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <img src="assets/baseline3.jpg" alt="Baseline result for prompt 2">
+                                <img src="assets/baseline3.jpg" alt="Baseline result for prompt 2" loading="lazy">
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <img src="assets/ours3.jpg" alt="Our result for prompt 2">
+                                <img src="assets/ours3.jpg" alt="Our result for prompt 2" loading="lazy">
                             </div>
                         </div>
                         <p class="caption">Prompt: "A woman is holding a bouquet of balloons and celebrating a birthday."</p>
@@ -164,11 +164,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <img src="assets/baseline4.jpg" alt="Baseline result for prompt 2">
+                                <img src="assets/baseline4.jpg" alt="Baseline result for prompt 2" loading="lazy">
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <img src="assets/ours4.jpg" alt="Our result for prompt 2">
+                                <img src="assets/ours4.jpg" alt="Our result for prompt 2" loading="lazy">
                             </div>
                         </div>
                         <p class="caption">Prompt: "A red book and an ivory sheep. "</p>
@@ -194,11 +194,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <img src="assets/baseline6.jpg" alt="Baseline result for prompt 2">
+                                <img src="assets/baseline6.jpg" alt="Baseline result for prompt 2" loading="lazy">
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <img src="assets/ours6.jpg" alt="Our result for prompt 2">
+                                <img src="assets/ours6.jpg" alt="Our result for prompt 2" loading="lazy">
                             </div>
                         </div>
                         <p class="caption">Prompt: "A woman sitting under an umbrella in the middle of a restaurant."</p>
@@ -217,11 +217,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video1.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/baseline_video1.mp4" type="video/mp4"></video>
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video1.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/ours_video1.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "A breathtaking close-up of a woman frozen in time as golden threads of light weave around her face, creating dynamic flowing patterns of energy amidst glowing particles."</p>
@@ -232,11 +232,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video2.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/baseline_video2.mp4" type="video/mp4"></video>
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video2.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/ours_video2.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "An astronaut flying in space, zoom out."</p>
@@ -249,11 +249,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video3.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/baseline_video3.mp4" type="video/mp4"></video>
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video3.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/ours_video3.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "A car accelerating to gain speed."</p>
@@ -264,11 +264,11 @@
                         <div class="comparison-content">
                             <div class="comparison-item">
                                 <span class="comparison-label">CFG</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/baseline_video4.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/baseline_video4.mp4" type="video/mp4"></video>
                             </div>
                             <div class="comparison-item">
                                 <span class="comparison-label label-ours">Ours</span>
-                                <video autoplay loop muted playsinline width="100%"><source src="assets/ours_video4.mp4" type="video/mp4"></video>
+                                <video loop muted playsinline width="100%"><source src="assets/ours_video4.mp4" type="video/mp4"></video>
                             </div>
                         </div>
                         <p class="caption">Prompt: "A parking meter and a truck."</p>
@@ -279,6 +279,8 @@
             </div>
         </div>
     </main>
+
+ 
 
 </body>
 </html>
