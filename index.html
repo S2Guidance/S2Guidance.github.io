@@ -15,9 +15,6 @@
     <!-- 1. 全屏英雄区域 (新结构) -->
     <!-- ====================================================== -->
     <header class="hero-section">
-        <!-- 背景大文字 -->
-        
-
         <div class="content-wrapper">
             <!-- 标题 -->
             <h2 class="paper-title">
@@ -108,9 +105,7 @@
             <div class="content-wrapper">
                 <h2 class="section-title">Gallery</h2>
 
-                <!-- ======================================================= -->
-                <!-- Text to Image Generation - 保持不变 -->
-                <!-- ======================================================= -->
+                <!-- Text to Image Generation -->
                 <h3 class="subsection-title">Text to Image Generation</h3>
                 <div class="gallery-grid">
                     
@@ -205,11 +200,8 @@
                     </div>                   
                 </div>
 
-                <!-- ======================================================= -->
-                <!-- Text to Video Generation - 布局已修改 -->
-                <!-- ======================================================= -->
+                <!-- Text to Video Generation -->
                 <h3 class="subsection-title">Text to Video Generation</h3>
-                <!-- 关键改动：添加了 'gallery-grid-videos' 类 -->
                 <div class="gallery-grid gallery-grid-videos">
 
                     <!-- 视频对比组 1 -->
@@ -242,8 +234,6 @@
                         <p class="caption">Prompt: "An astronaut flying in space."</p>
                     </div>
 
-
-
                     <!-- 视频对比组 3 -->
                     <div class="comparison-pair">
                         <div class="comparison-content">
@@ -273,34 +263,33 @@
                         </div>
                         <p class="caption">Prompt: "A close-up of a beautiful woman's face with colored powder exploding around her, creating an abstract splash of vibrant hues."</p>
                     </div>
-
-
                 </div>
             </div>
         </div>
-    </main>
-    <!-- ====================================================== -->
-    <!-- Citation Section (引用区域 - 最终版) -->
-    <!-- ====================================================== -->
-    <footer class="section" id="citation">
-        <div class="content-wrapper">
-            <h2 class="section-title">Citation</h2>
 
-            <!-- 介绍文本容器 -->
-            <div class="citation-intro">
-                <p>If you find our work useful for your research, please feel free to leave a star ⭐⭐⭐ and cite our paper:</p>
-            </div>
-            
-            <!-- BibTeX 代码容器 -->
-            <div class="bibtex-container">
-                <button id="copy-button" class="copy-btn" title="Copy to clipboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                    </svg>
-                    <span>Copy</span>
-                </button>
-                <pre><code id="bibtex-code">@misc{chen2025s2guidancestochasticselfguidance,
+        <!-- ====================================================== -->
+        <!-- Citation Section (引用区域 - 复用样式版) -->
+        <!-- ====================================================== -->
+        <div class="section" id="citation">
+            <div class="content-wrapper">
+                <h2 class="section-title">Citation</h2>
+
+                <!-- 复用 .section-text 样式，但额外添加居中 -->
+                <div class="section-text" style="text-align: center; margin-bottom: 2rem;">
+                    <p style="margin:0;">If you find our work useful for your research, please feel free to leave a star ⭐⭐⭐ and cite our paper:</p>
+                </div>
+                
+                <!-- 复用 .comparison-pair 样式 -->
+                <div class="comparison-pair" style="max-width: 800px; margin: 0 auto;">
+                    <div class="bibtex-container-inner">
+                        <button id="copy-button" class="copy-btn" title="Copy to clipboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                            <span>Copy</span>
+                        </button>
+                        <pre><code id="bibtex-code">@misc{chen2025s2guidancestochasticselfguidance,
       title={S^2-Guidance: Stochastic Self Guidance for Training-Free Enhancement of Diffusion Models}, 
       author={Chubin Chen and Jiashu Zhu and Xiaokun Feng and Nisha Huang and Meiqi Wu and Fangyuan Mao and Jiahong Wu and Xiangxiang Chu and Xiu Li},
       year={2025},
@@ -309,11 +298,12 @@
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2508.12880}, 
 }</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
 
-
+    </main>
 
     <!-- JavaScript for Copy Button -->
     <script>
@@ -344,12 +334,6 @@
             });
         });
     </script>
-
-</body>
-</html>
-
-
- 
 
 </body>
 </html>
