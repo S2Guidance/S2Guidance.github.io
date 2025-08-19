@@ -34,6 +34,45 @@ html, body {
     background-attachment: fixed; 
 }
 
+/* ====================================================== */
+/* Citation Section Styles (引用区域样式) */
+/* ====================================================== */
+
+#citation {
+    background-color: #1a1a1a; /* 使用一个略微不同的暗色，与页面其他部分形成微妙区分 */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    border-top: 1px solid #2a2a2a; /* 在顶部添加一条细线，增强区域分割感 */
+}
+
+.bibtex-container {
+    margin-top: 2rem;
+}
+
+.bibtex-container pre {
+    background-color: #252528; /* 代码块的深色背景 */
+    color: #e0e0e0;             /* 明亮的文本颜色，保证可读性 */
+    border: 1px solid #444;     /* 低调的边框 */
+    border-radius: 8px;         /* 圆角，与页面按钮风格保持一致 */
+    padding: 1.5rem;            /* 内部留出足够的空间，显得不拥挤 */
+    white-space: pre-wrap;      /* 允许文本自动换行 */
+    word-break: break-all;      /* 强制长单词换行，防止溢出 */
+    font-family: 'Courier New', Courier, monospace; /* 使用等宽字体，适合代码展示 */
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;           /* 确保文本左对齐 */
+    overflow-x: auto;           /* 如果内容过宽，则提供水平滚动条 */
+}
+
+.bibtex-container pre code {
+    font-family: inherit; /* 从 <pre> 标签继承字体 */
+}
+
+
+
+
+
+
 /* --- 英雄区域内的内容包装器 --- */
 .hero-section .content-wrapper {
     position: relative;
