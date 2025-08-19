@@ -34,45 +34,6 @@ html, body {
     background-attachment: fixed; 
 }
 
-/* ====================================================== */
-/* Citation Section Styles (引用区域样式) */
-/* ====================================================== */
-
-#citation {
-    background-color: #1a1a1a; /* 使用一个略微不同的暗色，与页面其他部分形成微妙区分 */
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    border-top: 1px solid #2a2a2a; /* 在顶部添加一条细线，增强区域分割感 */
-}
-
-.bibtex-container {
-    margin-top: 2rem;
-}
-
-.bibtex-container pre {
-    background-color: #252528; /* 代码块的深色背景 */
-    color: #e0e0e0;             /* 明亮的文本颜色，保证可读性 */
-    border: 1px solid #444;     /* 低调的边框 */
-    border-radius: 8px;         /* 圆角，与页面按钮风格保持一致 */
-    padding: 1.5rem;            /* 内部留出足够的空间，显得不拥挤 */
-    white-space: pre-wrap;      /* 允许文本自动换行 */
-    word-break: break-all;      /* 强制长单词换行，防止溢出 */
-    font-family: 'Courier New', Courier, monospace; /* 使用等宽字体，适合代码展示 */
-    font-size: 0.9rem;
-    line-height: 1.6;
-    text-align: left;           /* 确保文本左对齐 */
-    overflow-x: auto;           /* 如果内容过宽，则提供水平滚动条 */
-}
-
-.bibtex-container pre code {
-    font-family: inherit; /* 从 <pre> 标签继承字体 */
-}
-
-
-
-
-
-
 /* --- 英雄区域内的内容包装器 --- */
 .hero-section .content-wrapper {
     position: relative;
@@ -184,7 +145,7 @@ html, body {
 }
 .comparison-pair:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 40px rgba(170, 70, 255, 0.4); }
 .comparison-content { display: flex; gap: 4px; }
-.comparison-item { flex: 1; position: relative; overflow: hidden; cursor: pointer; } /* 添加 cursor: pointer */
+.comparison-item { flex: 1; position: relative; overflow: hidden; cursor: pointer; }
 .comparison-item img, .comparison-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .comparison-label { position: absolute; top: 8px; left: 8px; background-color: rgba(18, 18, 32, 0.8); color: #e0e0e0; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 6px; z-index: 10; }
 .comparison-pair .caption { padding: 1rem 1.2rem; font-size: 0.9rem; color: #b0b0b0; margin: 0; background: rgba(0, 0, 0, 0.2); min-height: 50px; display: flex; align-items: center; justify-content: center; text-align: center; flex-grow: 1; }
@@ -195,46 +156,24 @@ html, body {
     max-width: 800px; 
 }
 
-
-
-.comparison-item:hover .play-button {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
 /* ====================================================== */
-/* --- 新增：视频标准控件样式 (悬停显示) --- */
+/* --- 视频控件样式 --- */
 /* ====================================================== */
-
-/* ====================================================== */
-/* --- 更新：视频标准控件样式 (悬停显示, 隐藏音量) --- */
-/* ====================================================== */
-
-/* 默认隐藏浏览器原生控件 */
-video::-webkit-media-controls {
-    display: none !important;
-}
-
-/* 当鼠标悬停在视频容器上时，显示控件 */
-.comparison-item:hover video::-webkit-media-controls {
-    display: block !important;
-}
-
-/* 针对控件面板进行美化（可选，但推荐） */
+video::-webkit-media-controls { display: none !important; }
+.comparison-item:hover video::-webkit-media-controls { display: block !important; }
 video::-webkit-media-controls-panel {
     background-color: rgba(18, 18, 32, 0.7); 
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     border-radius: 0 0 12px 12px;
 }
-
-/* --- 新增：永久隐藏音量相关控件 --- */
 video::-webkit-media-controls-mute-button,
 video::-webkit-media-controls-volume-slider {
     display: none !important;
 }
 
 /* ====================================================== */
-/* Citation Section - Supplemental Styles (补充样式) */
+/* --- Citation Section - Supplemental Styles (补充样式) --- */
 /* ====================================================== */
 
 /* 微调 BibTeX 容器内部，以容纳按钮 */
@@ -254,7 +193,7 @@ video::-webkit-media-controls-volume-slider {
     margin: 0;
 }
 
-/* 复制按钮样式 (只需这一个) */
+/* 复制按钮样式 */
 .copy-btn {
     position: absolute;
     top: 1rem;
@@ -285,7 +224,4 @@ video::-webkit-media-controls-volume-slider {
     color: #fff;
     border-color: #28a745;
 }
-
-
-
 
