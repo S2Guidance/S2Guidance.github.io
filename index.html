@@ -310,6 +310,39 @@
     </footer>
 
 
+    <!-- JavaScript for Copy Button -->
+    <script>
+        const copyButton = document.getElementById('copy-button');
+        const bibtexCode = document.getElementById('bibtex-code');
+        const buttonText = copyButton.querySelector('span');
+
+        copyButton.addEventListener('click', () => {
+            // 获取代码文本
+            const textToCopy = bibtexCode.innerText;
+
+            // 使用 Clipboard API 复制文本
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // --- 提供视觉反馈 ---
+                // 1. 改变按钮文字和样式
+                buttonText.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+
+                // 2. 2秒后恢复原样
+                setTimeout(() => {
+                    buttonText.textContent = 'Copy';
+                    copyButton.classList.remove('copied');
+                }, 2000);
+
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                buttonText.textContent = 'Error'; // 如果出错，提示用户
+            });
+        });
+    </script>
+
+</body>
+</html>
+
 
  
 
