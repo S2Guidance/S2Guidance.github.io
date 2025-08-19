@@ -234,71 +234,27 @@ video::-webkit-media-controls-volume-slider {
 }
 
 /* ====================================================== */
-/* Citation Section Styles (最终版 - 仿照 Gallery 格式) */
+/* Citation Section - Supplemental Styles (补充样式) */
 /* ====================================================== */
 
-/* 1. 让 #citation 区块本身变得完全透明 */
-#citation {
-    padding-top: 4rem;
-    padding-bottom: 5rem;
-    /* 关键改动：移除了背景色和顶部边框，使其完全透明，露出页面背景 */
-}
-
-/* 2. 为两个内部卡片应用和 Gallery 卡片完全一致的样式 */
-.citation-intro,
-.bibtex-container {
-    /* 关键改动：这里直接使用了您 .comparison-pair 的样式 */
-    background: rgba(18, 18, 32, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    
-    /* 布局：限制最大宽度并水平居中 */
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* 3. 为两个卡片设置各自的边距和内边距 */
-.citation-intro {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    line-height: 1.8;
-}
-
-.bibtex-container {
-    position: relative; /* 用于复制按钮的绝对定位 */
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+/* 微调 BibTeX 容器内部，以容纳按钮 */
+.bibtex-container-inner {
+    position: relative;
     padding: 2rem;
-    padding-top: 4rem; /* 顶部留出更多空间给按钮 */
+    padding-top: 4rem; 
 }
 
-/* 4. pre 和 code 标签样式保持不变，确保代码正确显示 */
-.bibtex-container pre {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    color: #e0e0e0;
-    white-space: pre-wrap;
-    word-break: break-all;
+.bibtex-container-inner pre {
+    color: #d0d0d0;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
-    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
     text-align: left;
-    overflow-x: auto;
+    margin: 0;
 }
 
-.bibtex-container pre code {
-    font-family: inherit;
-}
-
-/* 5. 复制按钮样式保持不变 */
+/* 复制按钮样式 (只需这一个) */
 .copy-btn {
     position: absolute;
     top: 1rem;
@@ -330,13 +286,6 @@ video::-webkit-media-controls-volume-slider {
     border-color: #28a745;
 }
 
-.copy-btn svg {
-    transition: transform 0.2s ease;
-}
-
-.copy-btn.copied svg {
-    transform: scale(0);
-}
 
 
 
