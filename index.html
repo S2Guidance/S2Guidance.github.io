@@ -105,7 +105,9 @@
             <div class="content-wrapper">
                 <h2 class="section-title">Gallery</h2>
 
+                <!-- ======================================================= -->
                 <!-- Text to Image Generation -->
+                <!-- ======================================================= -->
                 <h3 class="subsection-title">Text to Image Generation</h3>
                 <div class="gallery-grid">
                     
@@ -136,14 +138,73 @@
                                 <img src="assets/ours2.jpg" alt="Our result for prompt 2" loading="lazy">
                             </div>
                         </div>
-                        <p class="caption">Prompt: "A floating castle above the clouds, with 'S2 Guidance Is All You Need' swirling in the mist."</p>
+                        <p class="caption">Prompt: "A floating castle above the clouds, with 'S² Guidance Is All You Need' swirling in the mist."</p>
                     </div>
 
-                    <!-- 其他图片对比组... -->
+                    <!-- 对比组 3 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline3.jpg" alt="Baseline result for prompt 3" loading="lazy">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours3.jpg" alt="Our result for prompt 3" loading="lazy">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A woman is holding a bouquet of balloons and celebrating a birthday."</p>
+                    </div>
+
+                    <!-- 对比组 4 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline4.jpg" alt="Baseline result for prompt 4" loading="lazy">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours4.jpg" alt="Our result for prompt 4" loading="lazy">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A red book and an ivory sheep. "</p>
+                    </div>                
+
+                    <!-- 对比组 5 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline5.jpg" alt="Baseline result for prompt 5" loading="lazy">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours5.jpg" alt="Our result for prompt 5" loading="lazy">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A cat sitting besides a rocket on a planet with a lot of cactuses."</p>
+                    </div>  
                     
+                     <!-- 对比组 6 -->
+                     <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <img src="assets/baseline6.jpg" alt="Baseline result for prompt 6" loading="lazy">
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <img src="assets/ours6.jpg" alt="Our result for prompt 6" loading="lazy">
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A woman sitting under an umbrella in the middle of a restaurant."</p>
+                    </div>                   
                 </div>
 
+                <!-- ======================================================= -->
                 <!-- Text to Video Generation -->
+                <!-- ======================================================= -->
                 <h3 class="subsection-title">Text to Video Generation</h3>
                 <div class="gallery-grid gallery-grid-videos">
 
@@ -162,8 +223,50 @@
                         <p class="caption">Prompt: "A breathtaking close-up of a woman frozen in time as golden threads of light weave around her face, creating dynamic flowing patterns of energy amidst glowing particles."</p>
                     </div>
 
-                    <!-- 其他视频对比组... -->
-                    
+                    <!-- 视频对比组 2 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <video autoplay loop muted playsinline controls width="100%"><source src="assets/baseline_video2.mp4" type="video/mp4"></video>
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <video autoplay loop muted playsinline controls width="100%"><source src="assets/ours_video2.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "An astronaut flying in space, zoom out."</p>
+                    </div>
+
+                    <!-- 视频对比组 3 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <video autoplay loop muted playsinline controls width="100%"><source src="assets/baseline_video3.mp4" type="video/mp4"></video>
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <video autoplay loop muted playsinline controls width="100%"><source src="assets/ours_video3.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A car accelerating to gain speed."</p>
+                    </div>
+
+                    <!-- 视频对比组 4 -->
+                    <div class="comparison-pair">
+                        <div class="comparison-content">
+                            <div class="comparison-item">
+                                <span class="comparison-label">CFG</span>
+                                <video autoplay loop muted playsinline controls width="100%"><source src="assets/baseline_video4.mp4" type="video/mp4"></video>
+                            </div>
+                            <div class="comparison-item">
+                                <span class="comparison-label label-ours">Ours</span>
+                                <video autoplay loop muted playsinline controls width="100%"><source src="assets/ours_video4.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                        <p class="caption">Prompt: "A close-up of a beautiful woman's face with colored powder exploding around her, creating an abstract splash of vibrant hues."</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,7 +278,7 @@
             <div class="content-wrapper">
                 <h2 class="section-title">Citation</h2>
 
-                <!--  introductory text without a background box -->
+                <!--  introductory text with link on stars -->
                 <div style="text-align: center; margin-bottom: 2rem; color: #d0d0d0;">
                     <p style="margin:0; font-size: 1.1rem; line-height: 1.8;">If you find our work useful for your research, please feel free to leave a <a href="https://github.com/AMAP-ML/S2-Guidance" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">⭐Star⭐</a> and cite our paper:</p>
                 </div>
