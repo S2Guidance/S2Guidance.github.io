@@ -233,4 +233,88 @@ video::-webkit-media-controls-volume-slider {
     display: none !important;
 }
 
+/* ====================================================== */
+/* Citation Section Styles (V2 - Translucent with Copy Button) */
+/* ====================================================== */
+
+#citation {
+    /* 保持与其它区域一致的上下边距 */
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+}
+
+.bibtex-container {
+    margin-top: 2rem;
+    position: relative; /* 这是为了让内部的复制按钮可以精确定位 */
+}
+
+.bibtex-container pre {
+    /* 半透明背景，rgba中的 0.2 代表 20% 的不透明度 */
+    background-color: rgba(37, 37, 40, 0.4); 
+    /* 毛玻璃效果，需要浏览器支持 */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
+    
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 更轻盈的边框 */
+    border-radius: 12px; /* 更大的圆角以配合现代感 */
+    padding: 2rem;
+    padding-top: 3.5rem; /* 给顶部的按钮留出空间 */
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
+    overflow-x: auto;
+}
+
+.bibtex-container pre code {
+    font-family: inherit;
+}
+
+/* 复制按钮样式 */
+.copy-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 图标和文字的间距 */
+
+    background-color: rgba(60, 60, 60, 0.7);
+    color: #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background-color: rgba(80, 80, 80, 0.9);
+    color: #fff;
+}
+
+/* 按钮点击后的状态 */
+.copy-btn.copied {
+    background-color: #28a745; /* 绿色，表示成功 */
+    color: #fff;
+    border-color: #28a745;
+}
+
+.copy-btn svg {
+    transition: transform 0.2s ease;
+}
+
+.copy-btn.copied svg {
+    transform: scale(0); /* 复制成功后隐藏图标 */
+}
+
+
 
